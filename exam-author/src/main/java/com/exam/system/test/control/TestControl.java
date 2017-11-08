@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -25,9 +26,19 @@ public class TestControl {
     private TestService testService;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET, RequestMethod.POST})
-    public List<TestBean> testList(@RequestBody TestBean bean) {
+    public @ResponseBody List<TestBean> testList(@RequestBody TestBean bean) {
         List<TestBean> result = testService.queryList(bean.getId());
         System.out.println("jinru.......");
         return result;
+    }
+
+    @RequestMapping("/toLogin")
+    public String toLogin() {
+        return "login";
+    }
+
+    @RequestMapping("/toList")
+    public String toList() {
+        return "list";
     }
 }

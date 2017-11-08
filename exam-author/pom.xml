@@ -13,8 +13,6 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <shiro.version>1.4.0</shiro.version>
-        <shiro.spring.version>1.4.0</shiro.spring.version>
     </properties>
 
     <dependencies>
@@ -22,25 +20,21 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>${shiro.version}</version>
         </dependency>
         <!-- shiro spring jar 与spring关联包 -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>
-            <version>${shiro.spring.version}</version>
         </dependency>
         <!-- shiro 缓存包 -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-cache</artifactId>
-            <version>${shiro.version}</version>
+            <artifactId>shiro-ehcache</artifactId>
         </dependency>
         <!-- shiro web-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-web</artifactId>
-            <version>${shiro.version}</version>
         </dependency>
     </dependencies>
     <build>

@@ -20,6 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 /**
@@ -52,7 +53,7 @@ public class TestControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             String json = objectMapper.writeValueAsString(bean);
-            mockMvc.perform(post("/test/list").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(json)).andExpect(status().isOk()).andDo(print());
+            mockMvc.perform(post("/test/list").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(json)).andExpect(status().isOk()).andDo(print()).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         } catch (Exception e) {
