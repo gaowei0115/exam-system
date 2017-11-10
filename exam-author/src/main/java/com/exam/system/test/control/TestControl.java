@@ -37,6 +37,11 @@ public class TestControl {
         return "login";
     }
 
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
+    }
+
     @RequestMapping("/toList")
     public String toList() {
         return "list";

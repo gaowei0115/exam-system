@@ -45,7 +45,7 @@
         <!-- 登录页面 -->
         <property name="loginUrl" value="/test/toLogin"/>
         <!-- 登录成功页面 -->
-        <property name="successUrl" value="/test/toList"/>
+        <property name="successUrl" value="/test/index"/>
         <!-- 没有权限页面 -->
         <property name="unauthorizedUrl" value="/unauthorized.html"/>
         <!--
@@ -56,8 +56,10 @@
         <property name="filterChainDefinitions">
             <value>
                 /toLogin = anon
+                /js/*=anon
+                /css/*=anon
                 # everything else requires authentication:
-                /** = authc
+                /** = anon
             </value>
         </property>
     </bean>
