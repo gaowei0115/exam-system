@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>考试科目</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<!-- 引用css -->
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap-fileinput.css" />
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" href="../../../css/commod.css" type="text/css">
+	<link href="../../../css/css/component.css" rel="stylesheet">
+	<!-- 引用js -->
+	<script type="text/javascript" src="../../../bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/docs.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-fileinput.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-switch.js"></script>
+	
+	<script type="text/javascript" src="../../../js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/jquery.qrcode.min.js"></script>
+	
+	<!--去掉悬浮窗 -->
+	<style type="text/css">#cl-dashboard{display: none}</style>
+	
+	<link title="" href="../../formwork/css/style.css" rel="stylesheet" type="text/css"/>
+	<link title="blue" href="../../formwork/css/dermadefault.css" rel="stylesheet" type="text/css"/>
+	<link title="green" href="../../formwork/css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link title="orange" href="../../formwork/css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link href="../../formwork/css/templatecss.css" rel="stylesheet" title="" type="text/css" />
+
+<script type="text/javascript" src="../../../js/bsdatetime.js"></script>
+
+</head>
+<body>
+	<div class="container-fluid">
+	    <div class="info-center" id="hader_h2">
+			<h2>新增考试科目</h2>    
+	    </div>    
+		<div class="col-md-offset-2 col-md-8 underline_div">
+	   	   <span class="lead"><strong class="red">*</strong>基本信息</span>
+	    </div>
+	   
+	   <div class="col-md-offset-2 col-md-6">
+	   <form action="" class="form-horizontal">
+	   		
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">科目名称：</label>
+					<div class="col-sm-9">
+						<input type="text" name="" id=""  class="form-control" placeholder="请输入科目名称" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+						<label for="" class="col-sm-3 control-label">考试专业：</label>
+						<div class="col-sm-9">
+	   						<select name="" id="" class="form-control" style="width: 60%">
+	   							<option value="">--请选择--</option>
+	   							<option value="" >项目管理</option>
+	   							<option value="">英语四级</option>
+	   						</select>
+   						</div>
+				</div>
+				
+				<div class="form-group">
+						<label for="" class="col-sm-3 control-label">公共课/专业课：</label>
+						<div class="col-sm-9">
+	   						<select name="" id="" class="form-control" style="width: 60%">
+	   							<option value="">--请选择--</option>
+	   							<option value="" >公共课</option>
+	   							<option value="">专业课</option>
+	   						</select>
+   						</div>
+				</div>
+				
+				<!-- 此处图片 -->
+				<div id="uploadForm" class="form-group" enctype="multipart/form-data">
+				<label for="" class="col-sm-3 control-label">上传教材封面：</label>
+				<div id="exampleInputUpload" class="fileinput fileinput-new col-sm-9" data-provides="fileinput">
+					<div class="fileinput-new thumbnail" style="width:150px;height: auto;max-height:150px;height:150px;">
+						<img id="picImg" alt="" src="images/noimage.png" style="width: 100%;height: auto;max-height: 140px;"/>
+					</div>
+					<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+					<div>
+						<span class="btn btn-primary btn-file pull-left">
+							<span class="fileinput-new">选择文件</span>
+							<span class="fileinput-exists">换一张</span>
+							<input id="picID" name="pic1" accept="image/gif,image/jpeg,image/x-png" type="file"/>
+						</span>
+						<a href="javascript:;" class="btn btn-warning fileinput-exists" data-dismiss="fileinput">移除</a>
+					</div>
+				</div>
+				</div>
+				
+				
+				
+			
+					
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">教材信息：</label>
+					<div class="col-sm-9">
+						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入教材信息" name="" id=""></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">重点章节：</label>
+					<div class="col-sm-9">
+						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入重点章节" name="" id=""></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">考试题型介绍：</label>
+					<div class="col-sm-9">
+						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入考试题型介绍" name="" id=""></textarea>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+								<label for="" class="col-sm-3 control-label">考试时间：</label>
+								<!-- 指定 date标记 -->
+								<div class='input-group date col-sm-9' id='datetimepicker1' style="padding-left: 15px;">
+									<input type='text' class="form-control" /> <span
+										class="input-group-addon"> <span
+										class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">备注：</label>
+					<div class="col-sm-9">
+						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入考试备注" name="" id=""></textarea>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3"></label>
+					<div class="col-sm-9">
+					<input type="button" onclick="javascript:history.back(-1);" class="btn btn-default" value="返回"/><input type="submit" class="btn btn-primary margin-width" value="保存" />
+					</div>
+				</div>
+	   
+	   </form>
+	   </div>
+	   
+	   
+	</div>
+
+</body>
+</html>

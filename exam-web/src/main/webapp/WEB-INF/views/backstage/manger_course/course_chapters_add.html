@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增考试章节</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<!-- 引用css -->
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap-fileinput.css" />
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" href="../../../css/commod.css" type="text/css">
+	<link href="../../../css/css/component.css" rel="stylesheet">
+	<!-- 引用js -->
+	<script type="text/javascript" src="../../../bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/docs.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-fileinput.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-switch.js"></script>
+	
+	<script type="text/javascript" src="../../../js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/jquery.qrcode.min.js"></script>
+	
+	<!--去掉悬浮窗 -->
+	<style type="text/css">#cl-dashboard{display: none}</style>
+	
+	<link title="" href="../../formwork/css/style.css" rel="stylesheet" type="text/css"/>
+	<link title="blue" href="../../formwork/css/dermadefault.css" rel="stylesheet" type="text/css"/>
+	<link title="green" href="../../formwork/css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link title="orange" href="../../formwork/css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link href="../../formwork/css/templatecss.css" rel="stylesheet" title="" type="text/css" />
+
+<script type="text/javascript" src="../../../js/bsdatetime.js"></script>
+
+</head>
+<body>
+	<div class="container-fluid">
+	    <div class="info-center" id="hader_h2">
+			<h2>新增考试章节</h2>    
+	    </div>    
+		<div class="col-md-offset-2 col-md-8 underline_div">
+	   	   <span class="lead"><strong class="red">*</strong>基本信息</span>
+	    </div>
+	   
+	   <div class="col-md-offset-2 col-md-6">
+	   <form action="" class="form-horizontal">
+	   		
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">章节名称：</label>
+					<div class="col-sm-9">
+						<input type="text" name="" id=""  class="form-control" placeholder="请输入章节名称" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+						<label for="" class="col-sm-3 control-label">考试科目：</label>
+						<div class="col-sm-9">
+	   						<select name="" id="" class="form-control" style="width: 60%">
+	   							<option value="">--请选择--</option>
+	   							<option value="" >项目管理软技术</option>
+	   							<option value="">项目范围管理</option>
+	   						</select>
+   						</div>
+				</div>
+				
+					
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">占分比重：</label>
+					<div class="col-sm-9">
+						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入占分比重（比如输入25位占分25%）" name="" id=""></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+						<label for="" class="col-sm-3 control-label">章节序号：</label>
+						<div class="col-sm-9" style="width: 50%;">
+	   						<select name="" id="" class="form-control" >
+	   							<option value="">--请选择--</option>
+	   							<option value="">01</option>
+	   							<option value="">02</option>
+	   							<option value="">03</option>
+	   							<option value="">04</option>
+	   							<option value="">05</option>
+	   							<option value="">06</option>
+	   							<option value="">07</option>
+	   							<option value="">08</option>
+	   							<option value="">09</option>
+	   							<option value="">10</option>
+	   							<option value="">11</option>
+	   							<option value="">12</option>
+	   							<option value="">13</option>
+	   							<option value="">14</option>
+	   							<option value="">15</option>
+	   							<option value="">16</option>
+	   							<option value="">17</option>
+	   							<option value="">18</option>
+	   							<option value="">19</option>
+	   							<option value="">20</option>
+	   						</select>
+   						</div>
+   						<div style="color: red !important;font-size: 10px;margin-top: 15px; ">注意：个科目中唯一,用于排序</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">备注：</label>
+					<div class="col-sm-9">
+						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入考试备注" name="" id=""></textarea>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3"></label>
+					<div class="col-sm-9">
+					<input type="button" onclick="javascript:history.back(-1);" class="btn btn-default" value="返回"/><input type="submit" class="btn btn-primary margin-width" value="保存" />
+					</div>
+				</div>
+	   
+	   </form>
+	   </div>
+	   
+	   
+	</div>
+
+</body>
+</html>

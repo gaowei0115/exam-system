@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>新增角色</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<!-- 引用css -->
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap-fileinput.css" />
+	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" href="../../../css/commod.css" type="text/css">
+	<link href="../../../css/css/component.css" rel="stylesheet">
+	<!-- 引用js -->
+	<script type="text/javascript" src="../../../bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/docs.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-fileinput.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-switch.js"></script>
+	
+	<script type="text/javascript" src="../../../js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../../../bootstrap/jquery.qrcode.min.js"></script>
+	
+	<!--去掉悬浮窗 -->
+	<style type="text/css">#cl-dashboard{display: none}</style>
+	
+	<link title="" href="../../formwork/css/style.css" rel="stylesheet" type="text/css"/>
+	<link title="blue" href="../../formwork/css/dermadefault.css" rel="stylesheet" type="text/css"/>
+	<link title="green" href="../../formwork/css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link title="orange" href="../../formwork/css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link href="../../formwork/css/templatecss.css" rel="stylesheet" title="" type="text/css" />
+
+	<link rel="stylesheet" href="../../../css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<link rel="stylesheet" href="../../../css/demo.css" type="text/css">
+	<script type="text/javascript" src="../../../js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="../../../js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="../../../js/jquery.ztree.excheck.js"></script>
+
+<script type="text/javascript">
+		 var setting = {
+			check: {
+				enable: true
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		};
+
+		var zNodes =[
+			{ id:100, pId:0, name:"课程管理",open:true},
+			{ id:200, pId:0, name:"题库管理",open:true},
+			
+			{ id:101, pId:100, name:"考试类型", open:false},
+			{ id:102, pId:100, name:"考试专业", open:false},
+			{ id:103, pId:100, name:"考试科目", open:false},
+			{ id:104, pId:100, name:"考试章节", open:false},
+			
+			{ id:201, pId:200, name:"题库管理",open:true},
+			{ id:202, pId:200, name:"试卷管理",open:true},
+			
+		
+		];
+		
+		var code;
+		
+		function setCheck() {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+			py = $("#py").attr("checked")? "p":"",
+			sy = $("#sy").attr("checked")? "s":"",
+			pn = $("#pn").attr("checked")? "p":"",
+			sn = $("#sn").attr("checked")? "s":"",
+			type = { "Y":py + sy, "N":pn + sn};
+			zTree.setting.check.chkboxType = type;
+			showCode('setting.check.chkboxType = { "Y" : "' + type.Y + '", "N" : "' + type.N + '" };');
+		}
+		function showCode(str) {
+			if (!code) code = $("#code");
+			code.empty();
+			code.append("<li>"+str+"</li>");
+		}
+		
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			setCheck();
+			$("#py").bind("change", setCheck);
+			$("#sy").bind("change", setCheck);
+			$("#pn").bind("change", setCheck);
+			$("#sn").bind("change", setCheck);
+		}); 
+		
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		 <div class="info-center" id="hader_h2">
+			<h2 style="border-left: 6px solid #1abc9c;height: 25px">新增角色</h2>    
+	     </div>  
+			
+		  <div class="col-md-offset-2 col-md-8 underline_div">
+	   	     <span class="lead"><strong class="red">*</strong>基本信息</span>
+	      </div>
+		 
+	   <div class="col-md-offset-2 col-md-7">
+	   <form action="" class="form-horizontal">
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">角色名称：</label>
+					<div class="col-sm-9">
+						<input type="text" name="" id="" class="form-control" placeholder="请输入角色名称" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">权限选择：</label>
+					<div class="col-sm-9">
+						<div class="zTreeDemoBackground left">
+							<ul id="treeDemo" class="ztree">
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3"></label>
+					<div class="col-sm-9">
+					<input type="button" onclick="javascript:history.back(-1);" class="btn btn-default" value="返回"/><input type="submit" class="btn btn-primary margin-width" value="保存" />
+					</div>
+				</div>
+		</form>
+		</div>
+				
+		<li style="display: none;">被勾选时：<input type="checkbox" id="py"
+			class="checkbox first" checked /><span>关联父</span> <input
+			type="checkbox" id="sy" class="checkbox first" checked /><span>关联子</span><br />
+			取消勾选时：<input type="checkbox" id="pn" class="checkbox first" checked /><span>关联父</span>
+			<input type="checkbox" id="sn" class="checkbox first" checked /><span>关联子</span><br />
+			<ul id="code" class="log" style="height:20px;"></ul>
+			</p>
+		</li>
+	</div>
+</body>
+</html>
