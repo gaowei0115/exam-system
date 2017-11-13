@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				[exam-web]%date [%thread] %-5level - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="registerLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/etl_abgw_ice_register.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>../logs/%d{yyyyMMdd}/etl_abgw_ice_register_%i.log</fileNamePattern>
+			<maxHistory>90</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>200MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="serverLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/abgw_ice_server.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>../logs/%d{yyyyMMdd}/abgw_ice_server_%i.log</fileNamePattern>
+			<maxHistory>90</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
+		        <maxFileSize>200MB</maxFileSize>  
+	      	</timeBasedFileNamingAndTriggeringPolicy>  
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				[abgw-ice]%date [%thread] %-5level [%X{UUID}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="serviceLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/abgw_ice_service.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>../logs/%d{yyyyMMdd}/abgw_ice_service_%i.log</fileNamePattern>
+			<maxHistory>90</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
+		        <maxFileSize>200MB</maxFileSize>  
+	      	</timeBasedFileNamingAndTriggeringPolicy>  
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				[abgw-ice]%date [%thread] %-5level [%X{UUID}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+    <appender name="daoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>../logs/abgw_ice_dao.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>../logs/%d{yyyyMMdd}/abgw_ice_dao_%i.log</fileNamePattern>
+            <maxHistory>90</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
+		        <maxFileSize>200MB</maxFileSize>  
+	      	</timeBasedFileNamingAndTriggeringPolicy>  
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                [abgw-ice]%date [%thread] %-5level [%X{UUID}] - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+	
+	<appender name="jobLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/abgw_ice_job.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>../logs/%d{yyyyMMdd}/abgw_ice_job_%i.log</fileNamePattern>
+			<maxHistory>90</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
+		        <maxFileSize>200MB</maxFileSize>  
+	      	</timeBasedFileNamingAndTriggeringPolicy> 
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				[abgw-ice]%date [%thread] %-5level [%X{UUID}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="prizeJobLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/abgw_ice_prizeJob.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>../logs/%d{yyyyMMdd}/abgw_ice_prizeJob_%i.log</fileNamePattern>
+			<maxHistory>90</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
+		        <maxFileSize>200MB</maxFileSize>  
+	      	</timeBasedFileNamingAndTriggeringPolicy> 
+		</rollingPolicy>
+		<encoder>
+			<pattern>
+				[abgw-ice]%date [%thread] %-5level [%X{UUID}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="asyncConsole" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold >0</discardingThreshold>
+		<queueSize>512</queueSize>
+		<appender-ref ref="console"/>
+	</appender>
+	
+	<appender name="asyncRegisterLog" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold >0</discardingThreshold>
+		<queueSize>512</queueSize>
+		<appender-ref ref="registerLog"/>
+	</appender>
+	
+	<appender name="asyncServerLog" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold >0</discardingThreshold>
+		<queueSize>512</queueSize>
+		<appender-ref ref="serverLog"/>
+	</appender>
+	
+	<appender name="asyncServiceLog" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold >0</discardingThreshold>
+		<queueSize>512</queueSize>
+		<appender-ref ref="serviceLog"/>
+	</appender>
+	
+	<appender name="asyncDaoLog" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold >0</discardingThreshold>
+		<queueSize>512</queueSize>
+		<appender-ref ref="daoLog"/>
+	</appender>
+
+	<appender name="asyncJobLog" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold >0</discardingThreshold>
+		<queueSize>512</queueSize>
+		<appender-ref ref="jobLog"/>
+	</appender>
+	
+	<appender name="asyncPrizeJobLog" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold >0</discardingThreshold>
+		<queueSize>512</queueSize>
+		<appender-ref ref="prizeJobLog"/>
+	</appender>
+	
+	<root level="INFO">
+		<appender-ref ref="asyncConsole"/>
+	</root>
+
+	<logger name="com.uuzz.lottery.abgw.register" level="${abgw-ice.logback.level}" additivity="false">
+		<appender-ref ref="asyncRegisterLog"/>
+	</logger>
+	
+	<logger name="com.uuzz.utils.logs.server" level="${abgw-ice.logback.level}" additivity="false">
+		<appender-ref ref="asyncServerLog"/>
+	</logger>
+	
+	<logger name="com.uuzz.utils.logs.service" level="${abgw-ice.logback.level}" additivity="false">
+		<appender-ref ref="asyncServiceLog"/>
+	</logger>
+	
+	<logger name="com.uuzz.utils.logs.dao" level="${abgw-ice.logback.level}" additivity="false">
+		<appender-ref ref="asyncDaoLog"/>
+	</logger>
+
+	<logger name="com.uuzz.lottery.abgw.job" level="${abgw-ice.logback.level}" additivity="false">
+		<appender-ref ref="asyncJobLog"/>
+	</logger>
+
+	<logger name="com.uuzz.lottery.abgw.prizeJob" level="${abgw-ice.logback.level}" additivity="false">
+		<appender-ref ref="asyncPrizeJobLog"/>
+	</logger>
+	
+	<logger name="druid.sql" level="ERROR"/>
+	
+	<logger name="org.springframework" level="ERROR"/>
+	
+</configuration>

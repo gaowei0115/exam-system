@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body> 
+	<div class="pull-right">
+		<nav aria-label="Page navigation">
+
+		<ul class="pagination">
+			<span class="pull-left page_span">共10页/100条数据</span>
+			<li><a href="javascript:;">首页</a></li>
+			<li><a href="javascript:;" aria-label="Previous"> <span
+					aria-hidden="true">&lt;</span></a></li>
+			<li class="active"><a href="javascript:;">1</a></li>
+			<li><a href="javascript:;">2</a></li>
+			<li><a href="javascript:;">3</a></li>
+			<li><a href="javascript:;">...</a></li>
+			<li><a href="javascript:;">50</a></li>
+			<li><a href="javascript:;" aria-label="Next"> <span
+					aria-hidden="true">&gt;</span>
+			</a></li>
+			<li><a href="javascript:;">尾页</a></li>
+
+			<span class="pull-left page_span_show">每页显示</span>
+
+			<span class="pull-right page_right"> <select name="" id=""
+				class="form-control" style="width: 95%">
+					<option value="">10</option>
+					<option value="">20</option>
+					<option value="">50</option>
+					<option value="">100</option>
+					<option value="">200</option>
+					<option value="">500</option>
+			</select>
+			</span>
+
+		</ul>
+		</nav>
+	</div>
+	<script>
+		$(".pagination li").click(function() {
+			$(this).addClass("active");
+			$(".pagination li").not($(this)).removeClass("active");
+		});
+	</script>
+</body>
+</html>
