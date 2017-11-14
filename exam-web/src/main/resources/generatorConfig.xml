@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 引入db配置文件 -->
+    <properties  resource="src/main/reources/property/datasource-config.properties"/>
+    
+    <context id="exam_table" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!-- jdbc -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="${datasource.url}"
+                        userId="${datasource.username}"
+                        password="${datasource.password}">
+        </jdbcConnection>
+
+        <!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals"  value="false"/>
+        </javaTypeResolver>
+
+        <!-- 指定生成对应实体 -->
+        <javaModelGenerator  targetPackage="com.exam.system.business.entity"
+                             targetProject="src/main/java">
+            <property  name="enableSubPackages"  value="true"/>
+            <property  name="trimStrings"  value="true"/>
+        </javaModelGenerator>
+
+        <!--自动生成的*Mapper.xml文件存放路径 -->
+        <sqlMapGenerator  targetPackage="com.exam.system.business.dao"
+                          targetProject="src/main/java">
+            <property  name="enableSubPackages"  value="true"/>
+
+        </sqlMapGenerator>
+
+        <!--自动生成的*Mapper.java存放路径 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.exam.system.business.dao"  targetProject="src/main/reources/sqlmap/mapping">
+            <property  name="enableSubPackages"  value="true"/>
+        </javaClientGenerator>
+
+        <!-- 表映射 -->
+        <table tableName="t_exam_type" domainObjectName="ExamTypeEntity">
+
+        </table>
+    </context>
+</generatorConfiguration>
