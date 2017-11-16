@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.system.manager.course.mapper.ExamTypeMapper">
+
+  <!-- 考试类型结果集映射 -->
+  <resultMap id="BaseResultMap" type="com.exam.system.manager.course.entity.ExamTypeEntity">
+    <id column="exam_id" jdbcType="BIGINT" property="examId" />
+    <result column="exam_name" jdbcType="VARCHAR" property="examName" />
+    <result column="exam_effect" jdbcType="VARCHAR" property="examEffect" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="creator" jdbcType="BIGINT" property="creator" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="modifier" jdbcType="BIGINT" property="modifier" />
+  </resultMap>
+
+  <!-- 基础列 -->
+  <sql id="Base_Column_List">
+    exam_id, exam_name, exam_effect, create_time, creator, update_time, modifier
+  </sql>
+
+  <!-- 根据考试类型编号查询 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_exam_type
+    where exam_id = #{exam_id,jdbcType=BIGINT}
+  </select>
+
+  <!-- 根据考试类型编号删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_exam_type
+    where exam_id = #{exam_id,jdbcType=BIGINT}
+  </delete>
+
+  <!-- 保存全部类型信息 -->
+  <insert id="insert" parameterType="com.exam.system.manager.entity.ExamTypeEntity">
+    insert into t_exam_type (exam_id, exam_name, exam_effect, 
+      create_time, creator, update_time, 
+      modifier)
+    values (#{exam_id,jdbcType=BIGINT}, #{exam_name,jdbcType=VARCHAR}, #{exam_effect,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=DATE}, #{creator,jdbcType=BIGINT}, #{update_time,jdbcType=DATE}, 
+      #{modifier,jdbcType=BIGINT})
+  </insert>
+
+  <!-- 选择保存考试类型信息 -->
+  <insert id="insertSelective" parameterType="com.exam.system.manager.entity.ExamTypeEntity">
+    insert into t_exam_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="exam_id != null">
+        exam_id,
+      </if>
+      <if test="exam_name != null">
+        exam_name,
+      </if>
+      <if test="exam_effect != null">
+        exam_effect,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="exam_id != null">
+        #{exam_id,jdbcType=BIGINT},
+      </if>
+      <if test="exam_name != null">
+        #{exam_name,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_effect != null">
+        #{exam_effect,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=DATE},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 选择更新开始类型 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.entity.ExamTypeEntity">
+    update t_exam_type
+    <set>
+      <if test="exam_name != null">
+        exam_name = #{exam_name,jdbcType=VARCHAR},
+      </if>
+      <if test="exam_effect != null">
+        exam_effect = #{exam_effect,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=DATE},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=BIGINT},
+      </if>
+    </set>
+    where exam_id = #{exam_id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 根据考试类型编号更新 -->
+  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.entity.ExamTypeEntity">
+    update t_exam_type
+    set exam_name = #{exam_name,jdbcType=VARCHAR},
+      exam_effect = #{exam_effect,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=DATE},
+      creator = #{creator,jdbcType=BIGINT},
+      update_time = #{update_time,jdbcType=DATE},
+      modifier = #{modifier,jdbcType=BIGINT}
+    where exam_id = #{exam_id,jdbcType=BIGINT}
+  </update>
+</mapper>
