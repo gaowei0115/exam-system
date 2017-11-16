@@ -38,7 +38,7 @@
         </javaTypeResolver>
 
         <!-- 指定生成对应实体 -->
-        <javaModelGenerator  targetPackage="com.exam.system.manager.system.entity"
+        <javaModelGenerator  targetPackage="com.exam.system.manager.course.entity"
                              targetProject="src/main/java">
             <property  name="enableSubPackages"  value="true"/>
             <property  name="trimStrings"  value="true"/>
@@ -48,7 +48,7 @@
         <!-- course manager table
           考试类型
          -->
-        <sqlMapGenerator  targetPackage="system"
+        <sqlMapGenerator  targetPackage="course"
                           targetProject="src/main/resources/sqlmap/mapping">
             <property  name="enableSubPackages"  value="true"/>
         </sqlMapGenerator>
@@ -56,12 +56,12 @@
         <!--自动生成的*Mapper.java存放路径 -->
         <!-- course manager -->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.exam.system.manager.system.mapper"  targetProject="src/main/java">
+                             targetPackage="com.exam.system.manager.course.mapper"  targetProject="src/main/java">
             <property  name="enableSubPackages"  value="true"/>
         </javaClientGenerator>
 
         <!-- 表映射-->
-        <table tableName="t_user_base" domainObjectName="UserBase"
+        <table tableName="t_exam_kind" domainObjectName="ExamKind"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" >
             <!-- 生成JavaBean 驼峰式命名 -->

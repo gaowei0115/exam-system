@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @packageName：com.exam.system.test.control
- * @desrciption: 测试控制层
+ * @desrciption: 模拟测试控制层
  * @author: gaowei
  * @date： 2017-11-13 13:27
  * @history: (version) author date desc
@@ -24,8 +24,21 @@ public class TestController {
         return  "login";
     }
 
+    /**
+     * 跳转到主页面
+     * @return
+     */
     @RequestMapping(value = "/toIndex", method = RequestMethod.POST)
     public String toList() {
         return "index";
+    }
+
+    /**
+     * 跳转到统计页面
+     * @return
+     */
+    @RequestMapping(value = "/toStatistics", method = RequestMethod.GET)
+    public String toStatistics() {
+        return "statistics/statistics";
     }
 }

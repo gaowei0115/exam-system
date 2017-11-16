@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.system.manager.question.mapper.ExamPaperMapper">
+  <resultMap id="BaseResultMap" type="com.exam.system.manager.question.entity.ExamPaperEntity">
+    <id column="paper_id" jdbcType="BIGINT" property="paperId" />
+    <result column="paper_name" jdbcType="VARCHAR" property="paperName" />
+    <result column="paper_date" jdbcType="DATE" property="paperDate" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="paper_type" jdbcType="VARCHAR" property="paperType" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="creator" jdbcType="BIGINT" property="creator" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="modifier" jdbcType="BIGINT" property="modifier" />
+    <result column="Column_1" jdbcType="CHAR" property="column1" />
+    <result column="Column_2" jdbcType="CHAR" property="column2" />
+    <result column="Column_3" jdbcType="CHAR" property="column3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    paper_id, paper_name, paper_date, state, paper_type, course_id, creat_time, creator, 
+    update_time, modifier, Column_1, Column_2, Column_3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_exam_paper
+    where paper_id = #{paperId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_exam_paper
+    where paper_id = #{paperId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.exam.system.manager.question.entity.ExamPaperEntity">
+    insert into t_exam_paper (paper_id, paper_name, paper_date, 
+      state, paper_type, course_id, 
+      creat_time, creator, update_time, 
+      modifier, Column_1, Column_2, 
+      Column_3)
+    values (#{paperId,jdbcType=BIGINT}, #{paperName,jdbcType=VARCHAR}, #{paperDate,jdbcType=DATE}, 
+      #{state,jdbcType=VARCHAR}, #{paperType,jdbcType=VARCHAR}, #{courseId,jdbcType=BIGINT}, 
+      #{creatTime,jdbcType=DATE}, #{creator,jdbcType=BIGINT}, #{updateTime,jdbcType=DATE}, 
+      #{modifier,jdbcType=BIGINT}, #{column1,jdbcType=CHAR}, #{column2,jdbcType=CHAR}, 
+      #{column3,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exam.system.manager.question.entity.ExamPaperEntity">
+    insert into t_exam_paper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        paper_id,
+      </if>
+      <if test="paperName != null">
+        paper_name,
+      </if>
+      <if test="paperDate != null">
+        paper_date,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="paperType != null">
+        paper_type,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="column1 != null">
+        Column_1,
+      </if>
+      <if test="column2 != null">
+        Column_2,
+      </if>
+      <if test="column3 != null">
+        Column_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paperId != null">
+        #{paperId,jdbcType=BIGINT},
+      </if>
+      <if test="paperName != null">
+        #{paperName,jdbcType=VARCHAR},
+      </if>
+      <if test="paperDate != null">
+        #{paperDate,jdbcType=DATE},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="paperType != null">
+        #{paperType,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=BIGINT},
+      </if>
+      <if test="column1 != null">
+        #{column1,jdbcType=CHAR},
+      </if>
+      <if test="column2 != null">
+        #{column2,jdbcType=CHAR},
+      </if>
+      <if test="column3 != null">
+        #{column3,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.question.entity.ExamPaperEntity">
+    update t_exam_paper
+    <set>
+      <if test="paperName != null">
+        paper_name = #{paperName,jdbcType=VARCHAR},
+      </if>
+      <if test="paperDate != null">
+        paper_date = #{paperDate,jdbcType=DATE},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="paperType != null">
+        paper_type = #{paperType,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=BIGINT},
+      </if>
+      <if test="column1 != null">
+        Column_1 = #{column1,jdbcType=CHAR},
+      </if>
+      <if test="column2 != null">
+        Column_2 = #{column2,jdbcType=CHAR},
+      </if>
+      <if test="column3 != null">
+        Column_3 = #{column3,jdbcType=CHAR},
+      </if>
+    </set>
+    where paper_id = #{paperId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.question.entity.ExamPaperEntity">
+    update t_exam_paper
+    set paper_name = #{paperName,jdbcType=VARCHAR},
+      paper_date = #{paperDate,jdbcType=DATE},
+      state = #{state,jdbcType=VARCHAR},
+      paper_type = #{paperType,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=BIGINT},
+      creat_time = #{creatTime,jdbcType=DATE},
+      creator = #{creator,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=DATE},
+      modifier = #{modifier,jdbcType=BIGINT},
+      Column_1 = #{column1,jdbcType=CHAR},
+      Column_2 = #{column2,jdbcType=CHAR},
+      Column_3 = #{column3,jdbcType=CHAR}
+    where paper_id = #{paperId,jdbcType=BIGINT}
+  </update>
+</mapper>

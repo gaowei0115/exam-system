@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.system.manager.system.mapper.UserBaseMapper">
+  <resultMap id="BaseResultMap" type="com.exam.system.manager.system.entity.UserBaseEntity">
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="login_code" jdbcType="VARCHAR" property="loginCode" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="register_time" jdbcType="DATE" property="registerTime" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="Column_1" jdbcType="CHAR" property="column1" />
+    <result column="Column_2" jdbcType="CHAR" property="column2" />
+    <result column="Column_3" jdbcType="CHAR" property="column3" />
+  </resultMap>
+  <insert id="insert" parameterType="com.exam.system.manager.system.entity.UserBaseEntity">
+    insert into t_user_base (user_id, real_name, login_code, 
+      nick_name, password, logo, 
+      register_time, role, creat_time, 
+      creator, update_time, modifier, 
+      Column_1, Column_2, Column_3)
+    values (#{userId,jdbcType=BIGINT}, #{realName,jdbcType=VARCHAR}, #{loginCode,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{registerTime,jdbcType=DATE}, #{role,jdbcType=VARCHAR}, #{creatTime,jdbcType=DATE}, 
+      #{creator,jdbcType=VARCHAR}, #{updateTime,jdbcType=DATE}, #{modifier,jdbcType=VARCHAR}, 
+      #{column1,jdbcType=CHAR}, #{column2,jdbcType=CHAR}, #{column3,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exam.system.manager.system.entity.UserBaseEntity">
+    insert into t_user_base
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="loginCode != null">
+        login_code,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="column1 != null">
+        Column_1,
+      </if>
+      <if test="column2 != null">
+        Column_2,
+      </if>
+      <if test="column3 != null">
+        Column_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCode != null">
+        #{loginCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=DATE},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null">
+        #{column1,jdbcType=CHAR},
+      </if>
+      <if test="column2 != null">
+        #{column2,jdbcType=CHAR},
+      </if>
+      <if test="column3 != null">
+        #{column3,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

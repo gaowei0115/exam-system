@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.system.manager.question.mapper.ExamLibraryMapper">
+  <resultMap id="BaseResultMap" type="com.exam.system.manager.question.entity.ExamLibraryEntity">
+    <id column="library_id" jdbcType="BIGINT" property="libraryId" />
+    <result column="source_code" jdbcType="BIGINT" property="sourceCode" />
+    <result column="source_type" jdbcType="BIGINT" property="sourceType" />
+    <result column="library_type" jdbcType="VARCHAR" property="libraryType" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="select_content" jdbcType="VARCHAR" property="selectContent" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="analysis" jdbcType="VARCHAR" property="analysis" />
+    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="Column_1" jdbcType="CHAR" property="column1" />
+    <result column="Column_2" jdbcType="CHAR" property="column2" />
+    <result column="Column_3" jdbcType="CHAR" property="column3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    library_id, source_code, source_type, library_type, course_id, state, title, select_content, 
+    result, analysis, creat_time, creator, update_time, modifier, Column_1, Column_2, 
+    Column_3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_exam_library
+    where library_id = #{libraryId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_exam_library
+    where library_id = #{libraryId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.exam.system.manager.question.entity.ExamLibraryEntity">
+    insert into t_exam_library (library_id, source_code, source_type, 
+      library_type, course_id, state, 
+      title, select_content, result, 
+      analysis, creat_time, creator, 
+      update_time, modifier, Column_1, 
+      Column_2, Column_3)
+    values (#{libraryId,jdbcType=BIGINT}, #{sourceCode,jdbcType=BIGINT}, #{sourceType,jdbcType=BIGINT}, 
+      #{libraryType,jdbcType=VARCHAR}, #{courseId,jdbcType=BIGINT}, #{state,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{selectContent,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
+      #{analysis,jdbcType=VARCHAR}, #{creatTime,jdbcType=DATE}, #{creator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=DATE}, #{modifier,jdbcType=VARCHAR}, #{column1,jdbcType=CHAR}, 
+      #{column2,jdbcType=CHAR}, #{column3,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.exam.system.manager.question.entity.ExamLibraryEntity">
+    insert into t_exam_library
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="libraryId != null">
+        library_id,
+      </if>
+      <if test="sourceCode != null">
+        source_code,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+      <if test="libraryType != null">
+        library_type,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="selectContent != null">
+        select_content,
+      </if>
+      <if test="result != null">
+        result,
+      </if>
+      <if test="analysis != null">
+        analysis,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="column1 != null">
+        Column_1,
+      </if>
+      <if test="column2 != null">
+        Column_2,
+      </if>
+      <if test="column3 != null">
+        Column_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="libraryId != null">
+        #{libraryId,jdbcType=BIGINT},
+      </if>
+      <if test="sourceCode != null">
+        #{sourceCode,jdbcType=BIGINT},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=BIGINT},
+      </if>
+      <if test="libraryType != null">
+        #{libraryType,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="selectContent != null">
+        #{selectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="analysis != null">
+        #{analysis,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null">
+        #{column1,jdbcType=CHAR},
+      </if>
+      <if test="column2 != null">
+        #{column2,jdbcType=CHAR},
+      </if>
+      <if test="column3 != null">
+        #{column3,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.question.entity.ExamLibraryEntity">
+    update t_exam_library
+    <set>
+      <if test="sourceCode != null">
+        source_code = #{sourceCode,jdbcType=BIGINT},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=BIGINT},
+      </if>
+      <if test="libraryType != null">
+        library_type = #{libraryType,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="selectContent != null">
+        select_content = #{selectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="analysis != null">
+        analysis = #{analysis,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=DATE},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null">
+        Column_1 = #{column1,jdbcType=CHAR},
+      </if>
+      <if test="column2 != null">
+        Column_2 = #{column2,jdbcType=CHAR},
+      </if>
+      <if test="column3 != null">
+        Column_3 = #{column3,jdbcType=CHAR},
+      </if>
+    </set>
+    where library_id = #{libraryId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.question.entity.ExamLibraryEntity">
+    update t_exam_library
+    set source_code = #{sourceCode,jdbcType=BIGINT},
+      source_type = #{sourceType,jdbcType=BIGINT},
+      library_type = #{libraryType,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=BIGINT},
+      state = #{state,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      select_content = #{selectContent,jdbcType=VARCHAR},
+      result = #{result,jdbcType=VARCHAR},
+      analysis = #{analysis,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=DATE},
+      creator = #{creator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=DATE},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      Column_1 = #{column1,jdbcType=CHAR},
+      Column_2 = #{column2,jdbcType=CHAR},
+      Column_3 = #{column3,jdbcType=CHAR}
+    where library_id = #{libraryId,jdbcType=BIGINT}
+  </update>
+</mapper>
