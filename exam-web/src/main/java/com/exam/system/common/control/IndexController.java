@@ -23,4 +23,40 @@ public class IndexController {
         return "index";
     }
 
+    /**
+     * 跳转到考试类型
+     * @return
+     */
+    @RequestMapping(value = "/toExamType", method = {RequestMethod.GET, RequestMethod.POST})
+    public String toExamType() {
+        return "manager_course/course_type";
+    }
+
+    /**
+     * 跳转到考试科目
+     * @return
+     */
+    @RequestMapping(value = "/toExamMajor", method = {RequestMethod.GET, RequestMethod.POST})
+    public String toExamMajor() {
+        return "manager_course/course_major";
+    }
+
+    /**
+     * 跳转到考试专业
+     * @return
+     */
+    @RequestMapping(value = "/toExamSubject", method = {RequestMethod.GET, RequestMethod.POST})
+    public String toExamSubject() {
+        return "manager_course/course_subject";
+    }
+
+    /**
+     * 跳转到科目章节
+     * @return
+     */
+    @RequestMapping(value = "/toExamChapter", method = {RequestMethod.GET, RequestMethod.POST})
+    public String toExamChapter() {
+        return "manager_course/course_chapters";
+    }
+
 }

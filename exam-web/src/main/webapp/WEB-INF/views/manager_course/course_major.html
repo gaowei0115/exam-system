@@ -5,38 +5,38 @@
 <title>考试专业管理</title>
 <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<!-- 引用css -->
-	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css" />
-	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap-fileinput.css" />
-	<link type="text/css" rel="stylesheet" href="../../../bootstrap/css/bootstrap-datetimepicker.min.css"/>
-	<link rel="stylesheet" href="../../../css/commod.css" type="text/css">
-	<link href="../../../css/css/component.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-fileinput.css" />
+	<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" href="css/commod.css" type="text/css">
+	<link href="css/css/component.css" rel="stylesheet">
 	<!-- 引用js -->
-	<script type="text/javascript" src="../../../bootstrap/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../../../bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../../bootstrap/js/docs.min.js"></script>
-	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-fileinput.js"></script>
-	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-switch.js"></script>
+	<script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/docs.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-fileinput.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-switch.js"></script>
 	
-	<script type="text/javascript" src="../../../js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="../../../bootstrap/js/moment-with-locales.min.js"></script>
-	<script type="text/javascript" src="../../../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript" src="../../../bootstrap/jquery.qrcode.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="bootstrap/jquery.qrcode.min.js"></script>
 	
 	<!--去掉悬浮窗 -->
 	<style type="text/css">#cl-dashboard{display: none}</style>
 	
-	<link title="" href="../../formwork/css/style.css" rel="stylesheet" type="text/css"/>
-	<link title="blue" href="../../formwork/css/dermadefault.css" rel="stylesheet" type="text/css"/>
-	<link title="green" href="../../formwork/css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
-	<link title="orange" href="../../formwork/css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
-	<link href="../../formwork/css/templatecss.css" rel="stylesheet" title="" type="text/css" />
+	<link title="" href="formwork/css/style.css" rel="stylesheet" type="text/css"/>
+	<link title="blue" href="formwork/css/dermadefault.css" rel="stylesheet" type="text/css"/>
+	<link title="green" href="formwork/css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link title="orange" href="formwork/css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link href="formwork/css/templatecss.css" rel="stylesheet" title="" type="text/css" />
 
 
 </head>
 <body>
 	<div class="container-fluid">
 	    <div class="info-center" id="hader_h2">
-			<h2>考试类型管理</h2>    
+			<h2>考试专业管理</h2>    
 	    </div>    
 		<div class="border_div">
 			<div class="bg-info width_height_padding">
@@ -47,7 +47,7 @@
 				<div class="row">
 					<div class="form-group col-md-5">
 						<label for="">搜索：</label> 
-						<input type="text" class="form-control" style="width: 75%" placeholder="请输入考试类型名字" />
+						<input type="text" class="form-control" style="width: 75%" placeholder="请输入考试专业名称" />
 					</div>
 					
 					<div class="form-group col-md-2">
@@ -64,31 +64,34 @@
 					<tr>
 						<td colspan=8>
 								<div class="pull-left">
-									<a href="course_type_add.html" class="btn btn-info">新增考试类型</a>
+									<a href="course_major_add.html" class="btn btn-info">新增考试专业</a>
 								</div>
 						</td>
 					</tr>
 					<tr class="info">
-						<th class="text-center">考试名字</th>
+						<th class="text-center">专业名称</th>
+						<th class="text-center">考试类型</th>
 						<th class="text-center">新增时间</th>
 						<th class="text-center">备注</th>
 						<th class="text-center">操作</th>
 					</tr>
 					<tr>
-						<td>英语等级考试</td>
+						<td>英语四级</td>
+						<td>英语等级考试（对应考试类型的名称）</td>
 						<td>2017-11-11 11:11:11</td>
-						<td>英语等级类考试</td>
+						<td>大学英语四级考试</td>
 						<td style="margin: 0;padding: 0">
-							<a href="course_type_add.html" class="btn btn-link">编辑</a>
+							<a href="course_major_add.html" class="btn btn-link">编辑</a>
 							<a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a>
 						</td>
 					</tr>
 					<tr>
-						<td>自考</td>
+						<td>自考项目管理</td>
+						<td>自考（对应考试类型的名称）</td>
 						<td>2017-11-11 11:11:11</td>
-						<td>学历提升考试</td>
+						<td>这个比较好考</td>
 						<td style="margin: 0;padding: 0">
-							<a href="course_type_add.html" class="btn btn-link">编辑</a>
+							<a href="course_major_add.html" class="btn btn-link">编辑</a>
 							<a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a>
 						</td>
 					</tr>
@@ -159,7 +162,7 @@
 		</div>
 	</div>
 	
-<script src="../../../js/js/classie.js"></script>
-<script src="../../../js/js/modalEffects.js"></script>
+<script src="js/js/classie.js"></script>
+<script src="js/js/modalEffects.js"></script>
 </body>
 </html>
