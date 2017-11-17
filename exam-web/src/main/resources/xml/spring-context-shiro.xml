@@ -45,9 +45,10 @@
         <!-- 登录页面
         <property name="loginUrl" value="/toLogin"/>
         -->
-        <!-- 登录成功页面
+
+        <!-- 登录成功页面-->
         <property name="successUrl" value="/test/index"/>
-        -->
+
         <!-- 没有权限页面 -->
         <property name="unauthorizedUrl" value="/unauthorized.html"/>
         <!--

@@ -47,6 +47,7 @@
                 </property>
                 -->
             </bean>
+
             <!-- 使用XML格式输出数据 -->
             <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
                 <!-- 配置自定义xml转换器
@@ -76,6 +77,7 @@
 
     <!-- 静态资源映射 -->
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/" cache-period="31536000"/>
+    <mvc:resources mapping="/bootstrap/**" location="/WEB-INF/static/bootstrap/" />
     <mvc:resources mapping="/bootstrap/js/**" location="/WEB-INF/static/bootstrap/js/" />
     <mvc:resources mapping="/bootstrap/css/**" location="/WEB-INF/static/bootstrap/css/" />
     <mvc:resources mapping="/bootstrap/fonts/**" location="/WEB-INF/static/bootstrap/fonts/" />
@@ -84,6 +86,7 @@
     <mvc:resources mapping="/images/**" location="/WEB-INF/static/images/" />
     <mvc:resources mapping="/js/**" location="/WEB-INF/static/js/" />
     <mvc:resources mapping="/ueditor/**" location="/WEB-INF/ueditor/" />
+    <mvc:resources mapping="/common/**" location="/WEB-INF/static/common/" />
 
     <!-- 定义视图文件解析 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

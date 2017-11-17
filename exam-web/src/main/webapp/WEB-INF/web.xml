@@ -108,9 +108,9 @@
     <error-code>404</error-code>
     <location>/notPage</location>
   </error-page>
-  
+
   <welcome-file-list>
-    <welcome-file>/WEB-INF/views/login.html</welcome-file>
+    <welcome-file>/WEB-INF/views/forward.html</welcome-file>
   </welcome-file-list>
 
 </web-app>

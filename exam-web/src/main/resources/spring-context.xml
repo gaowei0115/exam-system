@@ -26,5 +26,6 @@
     <!-- 导入xml -->
     <import resource="xml/spring-context-shiro.xml"/>
     <import resource="xml/spring-context-datasource.xml"/>
+    <import resource="xml/spring-context-redis.xml"/>
 
 </beans>

@@ -1,8 +1,16 @@
 package com.exam.system.manager.system.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserBaseEntity {
+/**
+ * 用户基础实体
+ * @author gaowei
+ */
+public class UserBaseEntity implements Serializable{
+
+    private static final long serialVersionUID = -4715695505108076634L;
+
     private Long userId;
 
     private String realName;
