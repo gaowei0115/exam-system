@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>主页</title>
+<title>题库后台管理系统</title>
 <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<!--引用css  -->
 	<link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
@@ -89,8 +89,8 @@ $(document).ready(function(){
       <li class="dropdown li-border"><a href="#" class="dropdown-toggle mystyle-color" data-toggle="dropdown">
       admin<span class="caret"></span></a>
         <ul class="dropdown-menu" style="width: 100px">
-          <li><a href="jsp/backstage/systemmanage/user_info.html" target="iframeArtwork">个人信息</a></li>
-          <li><a href="login.html">退出</a></li>
+          <li><a href="user/toUserInfo" target="iframeArtwork">个人信息</a></li>
+          <li><a href="toLogin">退出</a></li>
         </ul>
       </li>
      
@@ -110,24 +110,24 @@ $(document).ready(function(){
 				<ul class="navContent">
 					<li>
 						<div class="showtitle" style="width:100px;">考试类型</div> 
-							<a href="toExamType" target="iframeArtwork">
+							<a href="course/toExamType" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">考试类型</span>
 							</a>
 					</li>
 					<li>
 						<div class="showtitle" style="width:100px;">考试专业</div> 
-							<a href="toExamMajor" target="iframeArtwork">
+							<a href="course/toExamMajor" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">考试专业</span>
 						    </a>
 					</li>
 					<li>
 						<div class="showtitle" style="width:100px;">考试科目</div> 
-							<a href="toExamSubject" target="iframeArtwork">
+							<a href="course/toExamSubject" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">考试科目</span></a>
 					</li>
 					<li>
 						<div class="showtitle" style="width:100px;">考试章节</div> 
-							<a href="toExamChapter" target="iframeArtwork">
+							<a href="course/toExamChapter" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">考试章节</span></a>
 					</li>
 				</ul>
@@ -139,13 +139,13 @@ $(document).ready(function(){
 				<ul class="navContent">
 					<li>
 						<div class="showtitle" style="width:100px;">题库管理</div> 
-							<a href="jsp/backstage/manager_question/question_list.html" target="iframeArtwork">
+							<a href="question/toQuestion" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">题库管理</span>
 							</a>
 					</li>
 					<li>
 						<div class="showtitle" style="width:100px;">试卷管理</div> 
-							<a href="jsp/backstage/manager_question/question_exam_list.html" target="iframeArtwork">
+							<a href="question/toQuestionPaper" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">试卷管理</span>
 							</a>
 					</li>
@@ -161,7 +161,7 @@ $(document).ready(function(){
 					
 					<li>
 						<div class="showtitle" style="width:100px;">意见反馈</div> 
-							<a href="jsp/backstage/feedback/feedbacklist.html" target="iframeArtwork">
+							<a href="message/toBackMessage" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">意见反馈</span>
 						    </a>
 					</li>
@@ -183,20 +183,20 @@ $(document).ready(function(){
 				<ul class="navContent">
 					<li>
 						<div class="showtitle" style="width:100px;">角色管理</div> 
-							<a href="jsp/backstage/role/role_list.html" target="iframeArtwork">
+							<a href="user/toUserRole" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">角色管理</span>
 							</a>
 					</li>
 					<li>
 						<div class="showtitle" style="width:100px;">管理员管理</div> 
-							<a href="jsp/backstage/systemmanage/user_sys_list.html" target="iframeArtwork">
+							<a href="user/toSysUser" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">管理员管理</span>
 						    </a>
 					</li>
 					
 					<li>
-						<div class="showtitle" style="width:100px;">个人用户管理</div> 
-							<a href="jsp/backstage/systemmanage/user_public_list.html" target="iframeArtwork">
+						<div class="showtitle" style="width:100px;">用户管理</div>
+							<a href="user/toPublicUser" target="iframeArtwork">
 								<span class="sublist-icon"></span><span class="sub-title">用户管理</span>
 						    </a>
 					</li>
@@ -204,11 +204,11 @@ $(document).ready(function(){
 			</div>
 			
 			<!-- 单个菜单  -->
-			<a href="jsp/backstage/systemmanage/user_info.html" target="iframeArtwork" style="color: #fff;text-decoration:none">
+			<a href="user/toUserInfo" target="iframeArtwork" style="color: #fff;text-decoration:none">
 				<div id="single_menu" class="subNav sublist-down"><div></div><span class="glyphicon glyphicon-user"></span>
 				<span class="sublist-title">个人中心</span></div>
 			</a>
-			<a href="jsp/backstage/statistics/statistics.html" target="iframeArtwork" style="color: #fff;text-decoration:none">
+			<a href="data/toStatistical" target="iframeArtwork" style="color: #fff;text-decoration:none">
 				<div id="single_menu" class="subNav sublist-down"><div></div><span class="glyphicon glyphicon-stats"></span>
 				 <span class="sublist-title">数据统计</span></div>
 			</a>
@@ -220,7 +220,7 @@ $(document).ready(function(){
 	<div class="right-product my-index right-full">
     	 <div style="height:100%">
      		<iframe  class="body-iframe" name="iframeArtwork" width="100%" height="100%" 
-				src="toStatistics" frameborder="0"  scrolling="yes">
+				src="data/toStatistical" frameborder="0"  scrolling="yes">
 	 		</iframe>
 	 	</div>
  	</div>
