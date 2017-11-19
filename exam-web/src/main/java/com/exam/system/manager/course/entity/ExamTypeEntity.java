@@ -29,6 +29,11 @@ public class ExamTypeEntity implements Serializable{
     private String examEffect;
 
     /**
+     * 描述
+     */
+    private String desc;
+
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -48,9 +53,6 @@ public class ExamTypeEntity implements Serializable{
      */
     private Long modifier;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Long getExamId() {
         return examId;
@@ -106,5 +108,27 @@ public class ExamTypeEntity implements Serializable{
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    @Override
+    public String toString() {
+        return "ExamTypeEntity{" +
+                "examId=" + examId +
+                ", examName='" + examName + '\'' +
+                ", examEffect='" + examEffect + '\'' +
+                ", desc='" + desc + '\'' +
+                ", createTime=" + createTime +
+                ", creator=" + creator +
+                ", updateTime=" + updateTime +
+                ", modifier=" + modifier +
+                '}';
     }
 }
