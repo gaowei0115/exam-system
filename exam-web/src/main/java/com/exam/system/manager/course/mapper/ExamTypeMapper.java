@@ -2,6 +2,8 @@ package com.exam.system.manager.course.mapper;
 
 import com.exam.system.manager.course.entity.ExamTypeEntity;
 
+import java.util.List;
+
 /**
  * @desrciption: 考试类型Mapper
  * @author: gaowei
@@ -37,6 +39,12 @@ public interface ExamTypeMapper {
      * @return
      */
     ExamTypeEntity selectByPrimaryKey(Long exam_id);
+
+    /**
+     * 查询所有的考试类型
+     * @return
+     */
+    List<ExamTypeEntity> queryAllTypes();
 
     /**
      * 选择更新开始类型

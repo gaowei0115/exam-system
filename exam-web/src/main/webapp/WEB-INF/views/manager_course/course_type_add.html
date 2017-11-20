@@ -57,7 +57,7 @@
 				<div class="form-group">
 					<label for="" class="col-sm-3 control-label">备注：</label>
 					<div class="col-sm-9">
-						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入备注" name="desc" id="desc"></textarea>
+						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入备注" name="description" id="description"></textarea>
 					</div>
 				</div>
 
@@ -80,10 +80,10 @@
 	$(function () {
         $("#saveType").click(function () {
             var examName = $("#examName").val();
-            var desc = $("#desc").val();
+            var description = $("#description").val();
             var data = {
                 "examName":examName,
-                "desc":desc
+                "description":description
             };
             $.ajax({
                 url:getRootPath()+'/course/addExamType',
@@ -93,7 +93,7 @@
                 contentType:"application/json",
                 success : function(result) {
                     if (result.status == '0') {
-                        alert(result.message);
+                        window.location.href = getRootPath() + result.uri;
                     } else {
                         alert(result.message)
                     }

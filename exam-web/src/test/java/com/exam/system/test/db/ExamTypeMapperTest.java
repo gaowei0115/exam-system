@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @packageName：com.exam.system.test.db
@@ -29,5 +30,11 @@ public class ExamTypeMapperTest extends BaseTest{
         examTypeEntity.setCreateTime(new Date());
         examTypeEntity.setDescription("zikao");
         examTypeMapper.insertSelective(examTypeEntity);
+    }
+
+    @Test
+    public void test01() {
+        List<ExamTypeEntity> list = examTypeMapper.queryAllTypes();
+        System.out.println(list.size());
     }
 }

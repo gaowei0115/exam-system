@@ -8,6 +8,9 @@ import com.exam.system.manager.course.service.ExamTypeService;
 import com.exam.system.manager.entity.Message;
 import com.exam.system.manager.entity.ResultEntity;
 import com.exam.system.manager.entity.ViewData;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -70,6 +73,8 @@ public class CourseTypeController extends BaseController{
             resultEntity.setStatus(ResultState.FAIL.getState());
             resultEntity.setMessage(new Message("-1", "保存失败"));
         }
+        // 重定向到自考类型管理页面
+        resultEntity.setUri("/course/toExamType");
         return resultEntity;
     }
 
@@ -77,10 +82,13 @@ public class CourseTypeController extends BaseController{
     @ResponseBody
     public ResultEntity examTypeList(@RequestBody ExamTypeEntity examTypeEntity, @RequestParam(required = true, defaultValue = "1") Integer page, Integer pageSize) {
         ResultEntity resultEntity = new ResultEntity();
+        // 设置分页
+        PageHelper.startPage(page, pageSize);
+        List<ExamTypeEntity> list = examTypeService.queryAllTypes();
+        PageInfo<ExamTypeEntity> pi = new PageInfo<>(list);
+        ViewData<ExamTypeEntity> viewData = new ViewData<>(pi.getTotal(), list);
         resultEntity.setStatus(ResultState.SUCCESS.getState());
-        List<ExamTypeEntity> list = new ArrayList<>();
-        ViewData<ExamTypeEntity> viewDatas = new ViewData<ExamTypeEntity>(10, list);
-        resultEntity.setViewData(viewDatas);
+        resultEntity.setViewData(viewData);
         resultEntity.setUri("");
         return resultEntity;
     }

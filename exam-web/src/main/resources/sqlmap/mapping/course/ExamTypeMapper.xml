@@ -19,6 +19,14 @@
     exam_id, exam_name, exam_effect, create_time, creator, update_time, modifier, description
   </sql>
 
+  <!-- 查询所有的记录 -->
+  <select id="queryAllTypes" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_exam_type
+    order by exam_id
+  </select>
+
   <!-- 根据考试类型编号查询 -->
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 

@@ -8,6 +8,7 @@ function getRootPath() {
     var pj = "exam-web";
     if (strFullPath.indexOf(pj) == -1) {
         alert("部署项目名需以exam-web命名");
+        return;
     }
     // /course/toExamType
     var strPath = window.document.location.pathname;

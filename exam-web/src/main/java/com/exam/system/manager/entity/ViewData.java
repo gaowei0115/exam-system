@@ -14,19 +14,19 @@ public class ViewData<T> implements Serializable{
 
     private static final long serialVersionUID = -4344149220660142277L;
 
-    private Integer total;
+    private Long total;
     private List<T> datas;
 
-    public ViewData(Integer total, List<T> datas) {
+    public ViewData(Long total, List<T> datas) {
         this.total = total;
         this.datas = datas;
     }
 
-    public Integer getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(Long total) {
         this.total = total;
     }
 
