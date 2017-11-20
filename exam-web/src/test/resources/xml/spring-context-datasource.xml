@@ -46,13 +46,14 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- mybatis 配置文件 -->
         <property name="configLocation" value="classpath:sqlmap/sqlmap-config.xml" />
-        <property name="mapperLocations" value="classpath:sqlmap/mapping/*.xml"/>
+        <property name="mapperLocations" value="classpath:sqlmap/mapping/**/*.xml"/>
     </bean>
 
     <!-- 自动扫描mapper -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
-        <property name="basePackage" value="com.uuzz.lottery.abgw.dao"/>
+        <!-- 指定mapper多个以‘,’分割 -->
+        <property name="basePackage" value="com.exam.system.manager.course.mapper,com.exam.system.manager.message.mapper,com.exam.system.manager.question.mapper,com.exam.system.manager.system.mapper"/>
     </bean>
 
     <!-- 事务管理 -->

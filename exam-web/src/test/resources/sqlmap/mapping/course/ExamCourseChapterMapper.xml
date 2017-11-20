@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.exam.system.manager.course.mapper.ExamCourseChapterMapper">
+
   <resultMap id="BaseResultMap" type="com.exam.system.manager.course.entity.ExamCourseChapterEntity">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="chapter_code" jdbcType="BIGINT" property="chapterCode" />
@@ -30,7 +31,7 @@
     delete from t_exam_course_chapter
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.exam.system.manager.entity.ExamCourseChapterEntity">
+  <insert id="insert" parameterType="com.exam.system.manager.course.entity.ExamCourseChapterEntity">
     insert into t_exam_course_chapter (id, chapter_code, chapter_name, 
       chapter_desc, chapter_sp, course_id, 
       creat_time, creator, update_time, 
@@ -42,7 +43,7 @@
       #{modifier,jdbcType=BIGINT}, #{column11,jdbcType=CHAR}, #{column12,jdbcType=CHAR}, 
       #{column13,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.exam.system.manager.entity.ExamCourseChapterEntity">
+  <insert id="insertSelective" parameterType="com.exam.system.manager.course.entity.ExamCourseChapterEntity">
     insert into t_exam_course_chapter
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -127,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.entity.ExamCourseChapterEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.course.entity.ExamCourseChapterEntity">
     update t_exam_course_chapter
     <set>
       <if test="chapterCode != null">
@@ -169,7 +170,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.entity.ExamCourseChapterEntity">
+  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.course.entity.ExamCourseChapterEntity">
     update t_exam_course_chapter
     set chapter_code = #{chapterCode,jdbcType=BIGINT},
       chapter_name = #{chapterName,jdbcType=VARCHAR},

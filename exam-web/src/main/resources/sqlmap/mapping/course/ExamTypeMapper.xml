@@ -11,12 +11,12 @@
     <result column="creator" jdbcType="BIGINT" property="creator" />
     <result column="update_time" jdbcType="DATE" property="updateTime" />
     <result column="modifier" jdbcType="BIGINT" property="modifier" />
-    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
   </resultMap>
 
   <!-- 基础列 -->
   <sql id="Base_Column_List">
-    exam_id, exam_name, exam_effect, create_time, creator, update_time, modifier, desc
+    exam_id, exam_name, exam_effect, create_time, creator, update_time, modifier, description
   </sql>
 
   <!-- 根据考试类型编号查询 -->
@@ -24,121 +24,121 @@
     select 
     <include refid="Base_Column_List" />
     from t_exam_type
-    where exam_id = #{exam_id,jdbcType=BIGINT}
+    where exam_id = #{examId,jdbcType=BIGINT}
   </select>
 
   <!-- 根据考试类型编号删除 -->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_exam_type
-    where exam_id = #{exam_id,jdbcType=BIGINT}
+    where exam_id = #{examId,jdbcType=BIGINT}
   </delete>
 
   <!-- 保存全部类型信息 -->
-  <insert id="insert" parameterType="com.exam.system.manager.entity.ExamTypeEntity">
+  <insert id="insert" parameterType="com.exam.system.manager.course.entity.ExamTypeEntity">
     insert into t_exam_type (exam_id, exam_name, exam_effect, 
       create_time, creator, update_time, 
-      modifier, desc)
-    values (#{exam_id,jdbcType=BIGINT}, #{exam_name,jdbcType=VARCHAR}, #{exam_effect,jdbcType=VARCHAR}, 
-      #{create_time,jdbcType=DATE}, #{creator,jdbcType=BIGINT}, #{update_time,jdbcType=DATE}, 
-      #{modifier,jdbcType=BIGINT}, #{desc,jdbcType=VARCHAR})
+      modifier, description)
+    values (#{examId,jdbcType=BIGINT}, #{examName,jdbcType=VARCHAR}, #{examEffect,jdbcType=VARCHAR},
+      #{createTime,jdbcType=DATE}, #{creator,jdbcType=BIGINT}, #{updateTime,jdbcType=DATE},
+      #{modifier,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR})
   </insert>
 
   <!-- 选择保存考试类型信息 -->
-  <insert id="insertSelective" parameterType="com.exam.system.manager.entity.ExamTypeEntity">
+  <insert id="insertSelective" parameterType="com.exam.system.manager.course.entity.ExamTypeEntity">
     insert into t_exam_type
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="exam_id != null">
+      <if test="examId != null">
         exam_id,
       </if>
-      <if test="exam_name != null">
+      <if test="examName != null">
         exam_name,
       </if>
-      <if test="exam_effect != null">
+      <if test="examEffect != null">
         exam_effect,
       </if>
-      <if test="create_time != null">
+      <if test="createTime != null">
         create_time,
       </if>
       <if test="creator != null">
         creator,
       </if>
-      <if test="update_time != null">
+      <if test="updateTime != null">
         update_time,
       </if>
       <if test="modifier != null">
         modifier,
       </if>
-      <if test="desc != null">
-        desc,
+      <if test="description != null">
+        description,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="exam_id != null">
-        #{exam_id,jdbcType=BIGINT},
+      <if test="examId != null">
+        #{examId,jdbcType=BIGINT},
       </if>
-      <if test="exam_name != null">
-        #{exam_name,jdbcType=VARCHAR},
+      <if test="examName != null">
+        #{examName,jdbcType=VARCHAR},
       </if>
-      <if test="exam_effect != null">
-        #{exam_effect,jdbcType=VARCHAR},
+      <if test="examEffect != null">
+        #{examEffect,jdbcType=VARCHAR},
       </if>
-      <if test="create_time != null">
-        #{create_time,jdbcType=DATE},
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
       </if>
       <if test="creator != null">
         #{creator,jdbcType=BIGINT},
       </if>
-      <if test="update_time != null">
-        #{update_time,jdbcType=DATE},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
       </if>
       <if test="modifier != null">
         #{modifier,jdbcType=BIGINT},
       </if>
-      <if test="desc != null">
-        #{desc,jdbcType=VARCHAR},
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
 
   <!-- 选择更新开始类型 -->
-  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.entity.ExamTypeEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.course.entity.ExamTypeEntity">
     update t_exam_type
     <set>
-      <if test="exam_name != null">
-        exam_name = #{exam_name,jdbcType=VARCHAR},
+      <if test="examName != null">
+        exam_name = #{examName,jdbcType=VARCHAR},
       </if>
-      <if test="exam_effect != null">
-        exam_effect = #{exam_effect,jdbcType=VARCHAR},
+      <if test="examEffect != null">
+        exam_effect = #{examEffect,jdbcType=VARCHAR},
       </if>
-      <if test="create_time != null">
-        create_time = #{create_time,jdbcType=DATE},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
       </if>
       <if test="creator != null">
         creator = #{creator,jdbcType=BIGINT},
       </if>
-      <if test="update_time != null">
-        update_time = #{update_time,jdbcType=DATE},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
       </if>
       <if test="modifier != null">
         modifier = #{modifier,jdbcType=BIGINT},
       </if>
-      <if test="desc != null">
-        desc = #{desc,jdbcType=VARCHAR},
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
       </if>
     </set>
-    where exam_id = #{exam_id,jdbcType=BIGINT}
+    where exam_id = #{examId,jdbcType=BIGINT}
   </update>
 
   <!-- 根据考试类型编号更新 -->
-  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.entity.ExamTypeEntity">
+  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.course.entity.ExamTypeEntity">
     update t_exam_type
-    set exam_name = #{exam_name,jdbcType=VARCHAR},
-      exam_effect = #{exam_effect,jdbcType=VARCHAR},
-      create_time = #{create_time,jdbcType=DATE},
+    set exam_name = #{examName,jdbcType=VARCHAR},
+      exam_effect = #{examEffect,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
       creator = #{creator,jdbcType=BIGINT},
-      update_time = #{update_time,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
       modifier = #{modifier,jdbcType=BIGINT},
-      desc = #{desc,jdbcType=VARCHAR}
-    where exam_id = #{exam_id,jdbcType=BIGINT}
+      description = #{description,jdbcType=VARCHAR}
+    where exam_id = #{examId,jdbcType=BIGINT}
   </update>
 </mapper>

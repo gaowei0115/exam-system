@@ -31,6 +31,8 @@
 	<link title="orange" href="../formwork/css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
 	<link href="../formwork/css/templatecss.css" rel="stylesheet" title="" type="text/css" />
 
+	<script type="text/javascript" src="../common/util.js"></script>
+	<script type="text/javascript" src="../common/page.js"></script>
 
 </head>
 <body>
@@ -43,9 +45,8 @@
 	    </div>
 	   
 	   <div class="col-md-offset-2 col-md-6">
-	   <form action="" class="form-horizontal">
-	   		
-				
+	   <form action="" class="form-horizontal" onsubmit="return false">
+
 				<div class="form-group">
 					<label for="" class="col-sm-3 control-label">考试名字：</label>
 					<div class="col-sm-9">
@@ -59,12 +60,12 @@
 						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入备注" name="desc" id="desc"></textarea>
 					</div>
 				</div>
-				
-				
+
 				<div class="form-group">
 					<label for="" class="col-sm-3"></label>
 					<div class="col-sm-9">
-					<input type="button" onclick="javascript:history.back(-1);" class="btn btn-default" value="返回"/><input type="submit" class="btn btn-primary margin-width" value="保存" />
+					<input type="button" onclick="javascript:history.back(-1);" class="btn btn-default" value="返回"/>
+						<input type="submit" id="saveType" class="btn btn-primary margin-width" value="保存" />
 					</div>
 				</div>
 	   
@@ -75,4 +76,33 @@
 	</div>
 
 </body>
+<script type="text/javascript">
+	$(function () {
+        $("#saveType").click(function () {
+            var examName = $("#examName").val();
+            var desc = $("#desc").val();
+            var data = {
+                "examName":examName,
+                "desc":desc
+            };
+            $.ajax({
+                url:getRootPath()+'/course/addExamType',
+                type:"post",
+                dataType:"json",
+                data:JSON.stringify(data),
+                contentType:"application/json",
+                success : function(result) {
+                    if (result.status == '0') {
+                        alert(result.message);
+                    } else {
+                        alert(result.message)
+                    }
+                },
+                error : function (result) {
+                    alert("fail!")
+                }
+            });
+        });
+    });
+</script>
 </html>

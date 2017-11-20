@@ -15,7 +15,7 @@ import java.util.Date;
  * @date： 2017/11/19 21:53
  * @history: (version) author date desc
  */
-@Service("examTypeService")
+@Service("examTypeServiceImpl")
 public class ExamTypeServiceImpl implements ExamTypeService{
 
     /**
@@ -30,6 +30,7 @@ public class ExamTypeServiceImpl implements ExamTypeService{
             return 0;
         }
         examTypeEntity.setCreateTime(new Date());
+        examTypeEntity.setExamEffect("0");
         return examTypeMapper.insertSelective(examTypeEntity);
     }
 }

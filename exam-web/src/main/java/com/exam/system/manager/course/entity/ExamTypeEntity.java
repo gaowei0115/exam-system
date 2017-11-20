@@ -31,7 +31,7 @@ public class ExamTypeEntity implements Serializable{
     /**
      * 描述
      */
-    private String desc;
+    private String description;
 
     /**
      * 创建时间
@@ -110,12 +110,12 @@ public class ExamTypeEntity implements Serializable{
         this.updateTime = updateTime;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -124,7 +124,7 @@ public class ExamTypeEntity implements Serializable{
                 "examId=" + examId +
                 ", examName='" + examName + '\'' +
                 ", examEffect='" + examEffect + '\'' +
-                ", desc='" + desc + '\'' +
+                ", desc='" + description + '\'' +
                 ", createTime=" + createTime +
                 ", creator=" + creator +
                 ", updateTime=" + updateTime +

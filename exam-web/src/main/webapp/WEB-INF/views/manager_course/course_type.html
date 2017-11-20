@@ -19,14 +19,14 @@
 	<script type="text/javascript" src="../bootstrap/js/bootstrap-fileinput.js"></script>
 	<script type="text/javascript" src="../bootstrap/js/bootstrap-switch.js"></script>
 	<script type="text/javascript" src="../bootstrap/js/bootstrap-paginator.js"></script>
-	
+
 	<script type="text/javascript" src="../bootstrap/js/moment-with-locales.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript" src="../bootstrap/jquery.qrcode.min.js"></script>
 
 	<script type="text/javascript" src="../common/util.js"></script>
 	<script type="text/javascript" src="../common/page.js"></script>
-	
+
 	<!--去掉悬浮窗 -->
 	<style type="text/css">
 		.cl-dashboard{display: none}
@@ -38,7 +38,7 @@
 			border-radius: 4px;
 		}
 	</style>
-	
+
 	<link title="" href="../formwork/css/style.css" rel="stylesheet" type="text/css"/>
 	<link title="blue" href="../formwork/css/dermadefault.css" rel="stylesheet" type="text/css"/>
 	<link title="green" href="../formwork/css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
@@ -49,8 +49,8 @@
 <body>
 	<div class="container-fluid">
 	    <div class="info-center" id="hader_h2">
-			<h2>考试类型管理</h2>    
-	    </div>    
+			<h2>考试类型管理</h2>
+	    </div>
 		<div class="border_div">
 			<div class="bg-info width_height_padding">
 				<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;筛选查询
@@ -59,10 +59,10 @@
 				<form action="" class="form-inline" onsubmit="return false">
 				<div class="row">
 					<div class="form-group col-md-5">
-						<label for="">搜索：</label> 
+						<label for="">搜索：</label>
 						<input type="text" class="form-control" id="examName" name="examName" style="width: 75%" placeholder="请输入考试类型名字" />
 					</div>
-					
+
 					<div class="form-group col-md-2">
 						<input type="button" id="query" class="btn btn-primary col-md-4" value="查询"/>
 						<input type="button" class="btn btn-default col-md-4 margin-width"" value="重置"/>
@@ -105,8 +105,8 @@
 							<a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a>
 						</td>
 					</tr>
-					
-					
+
+
 					<tr>
 						<td colspan=8>
 								<!-- 分页 -->
@@ -158,7 +158,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 <script src="../js/js/classie.js"></script>
 <script src="../js/js/modalEffects.js"></script>
 
@@ -195,7 +195,7 @@
             "examName":examName
         };
         $.ajax({
-            url:getRootPath()+'/examTypeList?page='+ page +'&pageSize=' + pageSize,
+            url:getRootPath()+'/course/examTypeList?page='+ page +'&pageSize=' + pageSize,
             type:"post",
             dataType:"json",
             data:JSON.stringify(data),

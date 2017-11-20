@@ -34,7 +34,7 @@
     delete from t_exam_course
     where course_id = #{courseId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.exam.system.manager.entity.ExamCourseEntity">
+  <insert id="insert" parameterType="com.exam.system.manager.course.entity.ExamCourseEntity">
     insert into t_exam_course (course_id, course_name, state, 
       course_type, course_pic, course_location, 
       exam_time, course_version, course_desc, 
@@ -48,7 +48,7 @@
       #{modifier,jdbcType=BIGINT}, #{column1,jdbcType=CHAR}, #{column2,jdbcType=CHAR}, 
       #{column3,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.exam.system.manager.entity.ExamCourseEntity">
+  <insert id="insertSelective" parameterType="com.exam.system.manager.course.entity.ExamCourseEntity">
     insert into t_exam_course
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="courseId != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.entity.ExamCourseEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.exam.system.manager.course.entity.ExamCourseEntity">
     update t_exam_course
     <set>
       <if test="courseName != null">
@@ -202,7 +202,7 @@
     </set>
     where course_id = #{courseId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.entity.ExamCourseEntity">
+  <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.course.entity.ExamCourseEntity">
     update t_exam_course
     set course_name = #{courseName,jdbcType=VARCHAR},
       state = #{state,jdbcType=VARCHAR},
