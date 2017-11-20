@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>考试专业管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<!-- 引用css -->
+	<link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap-fileinput.css" />
+	<link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" href="../css/commod.css" type="text/css">
+	<link href="../css/css/component.css" rel="stylesheet">
+	<!-- 引用js -->
+	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/docs.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap-fileinput.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap-switch.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap-paginator.js"></script>
+	
+	<script type="text/javascript" src="../bootstrap/js/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="../bootstrap/jquery.qrcode.min.js"></script>
+
+	<script type="text/javascript" src="../common/util.js"></script>
+	<script type="text/javascript" src="../common/page.js"></script>
+	
+	<!--去掉悬浮窗 -->
+	<style type="text/css">
+		.cl-dashboard{display: none}
+		.pageCss {
+			display: inline-block;
+			padding-left: 0;
+			padding-right: 25px;
+			margin: 20px 0;
+			border-radius: 4px;
+		}
+	</style>
+	
+	<link title="" href="../formwork/css/style.css" rel="stylesheet" type="text/css"/>
+	<link title="blue" href="../formwork/css/dermadefault.css" rel="stylesheet" type="text/css"/>
+	<link title="green" href="../formwork/css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link title="orange" href="../formwork/css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
+	<link href="../formwork/css/templatecss.css" rel="stylesheet" title="" type="text/css" />
+
+</head>
+<body>
+	<div class="container-fluid">
+	    <div class="info-center" id="hader_h2">
+			<h2>考试类型管理</h2>    
+	    </div>    
+		<div class="border_div">
+			<div class="bg-info width_height_padding">
+				<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;筛选查询
+			</div>
+		<div class="width_padding">
+				<form action="" class="form-inline" onsubmit="return false">
+				<div class="row">
+					<div class="form-group col-md-5">
+						<label for="">搜索：</label> 
+						<input type="text" class="form-control" id="examName" name="examName" style="width: 75%" placeholder="请输入考试类型名字" />
+					</div>
+					
+					<div class="form-group col-md-2">
+						<input type="button" id="query" class="btn btn-primary col-md-4" value="查询"/>
+						<input type="button" class="btn btn-default col-md-4 margin-width"" value="重置"/>
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+		<!--  -->
+			<div class="table-responsive" style="margin-top: 30px;">
+				<table class="table table-striped table-bordered table-hover text-center" id="text_tr_td">
+					<tr>
+						<td colspan=8>
+								<div class="pull-left">
+									<a href="toAddExamType" class="btn btn-info">新增考试类型</a>
+								</div>
+						</td>
+					</tr>
+					<tr class="info">
+						<th class="text-center">考试名字</th>
+						<th class="text-center">新增时间</th>
+						<th class="text-center">备注</th>
+						<th class="text-center">操作</th>
+					</tr>
+					<tr>
+						<td>英语等级考试</td>
+						<td>2017-11-11 11:11:11</td>
+						<td>英语等级类考试</td>
+						<td style="margin: 0;padding: 0">
+							<a href="course_type_add.html" class="btn btn-link">编辑</a>
+							<a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a>
+						</td>
+					</tr>
+					<tr>
+						<td>自考</td>
+						<td>2017-11-11 11:11:11</td>
+						<td>学历提升考试</td>
+						<td style="margin: 0;padding: 0">
+							<a href="course_type_add.html" class="btn btn-link">编辑</a>
+							<a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a>
+						</td>
+					</tr>
+					
+					
+					<tr>
+						<td colspan=8>
+								<!-- 分页 -->
+								<div class="pull-left">
+									<span class="pageCss" id="pageleft"></span>
+								</div>
+								<!-- 引用分页 -->
+								<div class="pull-left">
+									<ul class="pagination" id="pageId">
+									</ul>
+								</div>
+								<div class="pull-right">
+									<span class="pageCss">每页显示</span>
+									<span class="pageCss"> <select name="pageSelect" id="pageSelect"
+																   class="form-control" style="width: 95%">
+												<option value="10">10</option>
+												<option value="20">20</option>
+												<option value="50">50</option>
+												<option value="100">100</option>
+												<option value="200">200</option>
+												<option value="500">500</option>
+										</select>
+										</span>
+								</div>
+								<script>
+									$(".pagination li").click(function() {
+										$(this).addClass("active");
+										$(".pagination li").not($(this)).removeClass("active");
+									});
+								</script>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!-- 提示删除语 -->
+	<div class="md-modal md-effect-2" id="modal-1">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="md-content">
+				<div class="modal-header bg-primary text-center"
+					style="height: 10px;font-size: 18px;">删除提示</div>
+				<div class="modal-body" style="padding-bottom: 15%">
+					<div>是否删除数据？</div>
+					<br> <input type="button"
+						class="btn btn-default md-close pull-right margin-width" value="否" />
+					<input type="button" class="btn btn-primary pull-right " value="是" />
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+<script src="../js/js/classie.js"></script>
+<script src="../js/js/modalEffects.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+
+		init();
+        /*
+        * 查询
+        * */
+        $("#query").click(function () {
+			query();
+		});
+
+    })
+
+	/*
+	* 初始化
+	*/
+	function  init() {
+		var page = 1;
+		var pageSize = 10;
+		$('#pageSelect').val('10');
+        query(page, pageSize);
+    }
+
+	/**
+	* 查询
+	 */
+	function  query(page, pageSize) {
+        var examName = $("#examName").val();
+        var pageSelect = $("#pageSelect").val();
+        var data = {
+            "examName":examName
+        };
+        $.ajax({
+            url:getRootPath()+'/examTypeList?page='+ page +'&pageSize=' + pageSize,
+            type:"post",
+            dataType:"json",
+            data:JSON.stringify(data),
+            contentType:"application/json",
+            success : function(data) {
+                if (data.status == '0') {
+                    pageFn.setPageProperties($('.pagination'), data, {currentPage: page, pageSize: pageSize});
+                } else {
+                    alert(result.message)
+                }
+            },
+            error : function (result) {
+                alert("fail!")
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

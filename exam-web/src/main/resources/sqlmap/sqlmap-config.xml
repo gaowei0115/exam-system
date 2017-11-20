@@ -21,5 +21,19 @@
         <setting name="jdbcTypeForNull" value="OTHER" />
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
     </settings>
+    
+    <!-- 分页插件配置 -->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!-- 设置数据库类型 -->
+            <property name="dialect" value="mysql"/>
+            <property name="offsetAsPageNum" value="true"/>
+            <property name="rowBoundsWithCount" value="true"/>
+            <property name="pageSizeZero" value="true"/>
+            <property name="reasonable" value="false"/>
+            <property name="supportMethodsArguments" value="false"/>
+            <property name="returnPageInfo" value="none"/>
+        </plugin>
+    </plugins>
 
 </configuration>

@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>统计页面</title>
-<script type="text/javascript" src="js/bsdatetime.js"></script>
+<title>新增考试类型</title>
 <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<!-- 引用css -->
 	<link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
@@ -31,37 +30,49 @@
 	<link title="green" href="../formwork/css/dermagreen.css" rel="stylesheet" type="text/css" disabled="disabled"/>
 	<link title="orange" href="../formwork/css/dermaorange.css" rel="stylesheet" type="text/css" disabled="disabled"/>
 	<link href="../formwork/css/templatecss.css" rel="stylesheet" title="" type="text/css" />
-	<!-- 时间 -->
-	<script type="text/javascript" src="../js/bsdatetime.js"></script>
+
+
 </head>
-<body >
+<body>
 	<div class="container-fluid">
-		<h1 class="text-center text-info page-header">统计展示todo</h1>
-	<!--<img src="images/img/splash_bg.jpg" width="100%" height="">-->
-		<div class="table-responsive" style="margin-top: 30px;">
-				<table class="table table-striped table-bordered table-hover text-center" id="text_tr_td">
-					
-					<tr class="info">
-						<th class="text-center">平台名字</th>
-						<th class="text-center">详情</th>
-						<th class="text-center">备注</th>
-						<th class="text-center">账号</th>
-						
-					</tr>
-					<tr>
-						<td>umeng统计</td>
-						
-						
-						<td style="margin: 0;padding: 0">
-							<a href="http://umeng.com" class="btn btn-link" target="_blank">查看</a>
-						</td>
-						<td>数据统计平台</td>
-						<td>xxxxxx</td>
-					</tr>
-					
-				</table>
-			</div>
+	    <div class="info-center" id="hader_h2">
+			<h2>新增考试类型</h2>    
+	    </div>    
+		<div class="col-md-offset-2 col-md-8 underline_div">
+	   	   <span class="lead"><strong class="red">*</strong>基本信息</span>
+	    </div>
+	   
+	   <div class="col-md-offset-2 col-md-6">
+	   <form action="" class="form-horizontal">
+	   		
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">考试名字：</label>
+					<div class="col-sm-9">
+						<input type="text" name="examName" id="examName"  class="form-control" placeholder="请输入考试名字" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">备注：</label>
+					<div class="col-sm-9">
+						<textarea rows="4" cols="10" style="resize: none;" class="form-control" placeholder="请输入备注" name="desc" id="desc"></textarea>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label for="" class="col-sm-3"></label>
+					<div class="col-sm-9">
+					<input type="button" onclick="javascript:history.back(-1);" class="btn btn-default" value="返回"/><input type="submit" class="btn btn-primary margin-width" value="保存" />
+					</div>
+				</div>
+	   
+	   </form>
+	   </div>
+	   
+	   
 	</div>
-	
+
 </body>
 </html>

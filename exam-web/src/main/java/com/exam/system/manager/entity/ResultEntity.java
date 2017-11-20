@@ -26,6 +26,19 @@ public class ResultEntity implements Serializable{
      */
     private String uri;
 
+    /**
+     * 返回页面数据
+     */
+    private ViewData viewData;
+
+
+    public ViewData getViewData() {
+        return viewData;
+    }
+
+    public void setViewData(ViewData viewData) {
+        this.viewData = viewData;
+    }
 
     public int getStatus() {
         return status;
