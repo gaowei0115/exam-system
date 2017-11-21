@@ -41,11 +41,18 @@
                     <list><value>application/json;charset=UTF-8</value></list>
                 </property>
                 <property name="prettyPrint" value="false"/>
-                <!-- 自定义json转换器
+                <!-- 自定义json转换器 -->
                 <property name="objectMapper">
-                    <bean class="com.thinkgem.jeesite.common.mapper.JsonMapper"></bean>
+                        <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                            <property name="dateFormat">
+                                <bean class="java.text.SimpleDateFormat">
+                                    <!-- 设置全局返回JSON到前端时日期格式化 -->
+                                    <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                                </bean>
+                            </property>
+                        </bean>
                 </property>
-                -->
+
             </bean>
 
             <!-- 使用XML格式输出数据 -->

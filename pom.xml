@@ -228,6 +228,13 @@
       <artifactId>pagehelper</artifactId>
       <version>4.1.6</version>
     </dependency>
+
+    <!-- json日期格式转换 -->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>
