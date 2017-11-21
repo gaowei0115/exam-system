@@ -9,9 +9,9 @@
     <result column="chapter_desc" jdbcType="VARCHAR" property="chapterDesc" />
     <result column="chapter_sp" jdbcType="DOUBLE" property="chapterSp" />
     <result column="course_id" jdbcType="BIGINT" property="courseId" />
-    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="creator" jdbcType="BIGINT" property="creator" />
-    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="modifier" jdbcType="BIGINT" property="modifier" />
     <result column="Column_11" jdbcType="CHAR" property="column11" />
     <result column="Column_12" jdbcType="CHAR" property="column12" />
@@ -39,7 +39,7 @@
       Column_13)
     values (#{id,jdbcType=BIGINT}, #{chapterCode,jdbcType=BIGINT}, #{chapterName,jdbcType=VARCHAR}, 
       #{chapterDesc,jdbcType=VARCHAR}, #{chapterSp,jdbcType=DOUBLE}, #{courseId,jdbcType=BIGINT}, 
-      #{creatTime,jdbcType=DATE}, #{creator,jdbcType=BIGINT}, #{updateTime,jdbcType=DATE}, 
+      #{creatTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP},
       #{modifier,jdbcType=BIGINT}, #{column11,jdbcType=CHAR}, #{column12,jdbcType=CHAR}, 
       #{column13,jdbcType=CHAR})
   </insert>
@@ -106,13 +106,13 @@
         #{courseId,jdbcType=BIGINT},
       </if>
       <if test="creatTime != null">
-        #{creatTime,jdbcType=DATE},
+        #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         #{creator,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=DATE},
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         #{modifier,jdbcType=BIGINT},
@@ -147,13 +147,13 @@
         course_id = #{courseId,jdbcType=BIGINT},
       </if>
       <if test="creatTime != null">
-        creat_time = #{creatTime,jdbcType=DATE},
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         creator = #{creator,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=DATE},
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         modifier = #{modifier,jdbcType=BIGINT},
@@ -177,9 +177,9 @@
       chapter_desc = #{chapterDesc,jdbcType=VARCHAR},
       chapter_sp = #{chapterSp,jdbcType=DOUBLE},
       course_id = #{courseId,jdbcType=BIGINT},
-      creat_time = #{creatTime,jdbcType=DATE},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=BIGINT},
-      update_time = #{updateTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
       modifier = #{modifier,jdbcType=BIGINT},
       Column_11 = #{column11,jdbcType=CHAR},
       Column_12 = #{column12,jdbcType=CHAR},

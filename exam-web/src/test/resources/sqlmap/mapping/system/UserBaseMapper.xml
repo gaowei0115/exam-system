@@ -8,11 +8,11 @@
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="logo" jdbcType="VARCHAR" property="logo" />
-    <result column="register_time" jdbcType="DATE" property="registerTime" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
     <result column="role" jdbcType="VARCHAR" property="role" />
-    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
-    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="modifier" jdbcType="VARCHAR" property="modifier" />
     <result column="Column_1" jdbcType="CHAR" property="column1" />
     <result column="Column_2" jdbcType="CHAR" property="column2" />
@@ -26,8 +26,8 @@
       Column_1, Column_2, Column_3)
     values (#{userId,jdbcType=BIGINT}, #{realName,jdbcType=VARCHAR}, #{loginCode,jdbcType=VARCHAR}, 
       #{nickName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
-      #{registerTime,jdbcType=DATE}, #{role,jdbcType=VARCHAR}, #{creatTime,jdbcType=DATE}, 
-      #{creator,jdbcType=VARCHAR}, #{updateTime,jdbcType=DATE}, #{modifier,jdbcType=VARCHAR}, 
+      #{registerTime,jdbcType=TIMESTAMP}, #{role,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP},
+      #{creator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR},
       #{column1,jdbcType=CHAR}, #{column2,jdbcType=CHAR}, #{column3,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.exam.system.manager.system.entity.UserBaseEntity">
@@ -99,19 +99,19 @@
         #{logo,jdbcType=VARCHAR},
       </if>
       <if test="registerTime != null">
-        #{registerTime,jdbcType=DATE},
+        #{registerTime,jdbcType=TIMESTAMP},
       </if>
       <if test="role != null">
         #{role,jdbcType=VARCHAR},
       </if>
       <if test="creatTime != null">
-        #{creatTime,jdbcType=DATE},
+        #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         #{creator,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=DATE},
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         #{modifier,jdbcType=VARCHAR},

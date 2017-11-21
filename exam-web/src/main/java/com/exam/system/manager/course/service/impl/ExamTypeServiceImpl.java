@@ -41,4 +41,9 @@ public class ExamTypeServiceImpl implements ExamTypeService{
     public List<ExamTypeEntity> queryAllTypes() {
         return examTypeMapper.queryAllTypes();
     }
+
+    @Override
+    public int updateExamType(ExamTypeEntity entity) {
+        return examTypeMapper.updateByPrimaryKeySelective(entity);
+    }
 }

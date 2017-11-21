@@ -8,9 +8,9 @@
     <result column="kind_name" jdbcType="VARCHAR" property="kindName" />
     <result column="kind_effect" jdbcType="VARCHAR" property="kindEffect" />
     <result column="exam_id" jdbcType="BIGINT" property="examId" />
-    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="creator" jdbcType="BIGINT" property="creator" />
-    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="modifier" jdbcType="BIGINT" property="modifier" />
   </resultMap>
 
@@ -40,8 +40,8 @@
       exam_id, create_time, creator, 
       update_time, modifier)
     values (#{kindName,jdbcType=VARCHAR}, #{kindEffect,jdbcType=VARCHAR},
-      #{examId,jdbcType=BIGINT}, #{createTime,jdbcType=DATE}, #{creator,jdbcType=BIGINT}, 
-      #{updateTime,jdbcType=DATE}, #{modifier,jdbcType=BIGINT})
+      #{examId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=BIGINT},
+      #{updateTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=BIGINT})
   </insert>
 
   <!-- 选择保存专业信息 -->
@@ -87,13 +87,13 @@
         #{examId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=DATE},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         #{creator,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=DATE},
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         #{modifier,jdbcType=BIGINT},
@@ -115,13 +115,13 @@
         exam_id = #{examId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=DATE},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         creator = #{creator,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=DATE},
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         modifier = #{modifier,jdbcType=BIGINT},
@@ -136,9 +136,9 @@
     set kind_name = #{kindName,jdbcType=VARCHAR},
       kind_effect = #{kindEffect,jdbcType=VARCHAR},
       exam_id = #{examId,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=BIGINT},
-      update_time = #{updateTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
       modifier = #{modifier,jdbcType=BIGINT}
     where kind_id = #{kindId,jdbcType=BIGINT}
   </update>

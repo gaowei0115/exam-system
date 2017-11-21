@@ -78,6 +78,13 @@ public class CourseTypeController extends BaseController{
         return resultEntity;
     }
 
+    /**
+     * 显示记录
+     * @param examTypeEntity
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @RequestMapping(value = "/examTypeList", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public ResultEntity examTypeList(@RequestBody ExamTypeEntity examTypeEntity, @RequestParam(required = true, defaultValue = "1") Integer page, Integer pageSize) {
@@ -90,6 +97,29 @@ public class CourseTypeController extends BaseController{
         resultEntity.setStatus(ResultState.SUCCESS.getState());
         resultEntity.setViewData(viewData);
         resultEntity.setUri("");
+        return resultEntity;
+    }
+
+    /**
+     * 修改自考类型
+     * @param examTypeEntity
+     * @return
+     */
+    @RequestMapping(value = "/modifyExamType", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultEntity modifyExamType(@RequestBody ExamTypeEntity examTypeEntity) {
+        ResultEntity resultEntity = new ResultEntity();
+        log.debug("修改考试类型：{}", examTypeEntity);
+        int result = examTypeService.updateExamType(examTypeEntity);
+        if (result > 0) {
+            resultEntity.setStatus(ResultState.SUCCESS.getState());
+            resultEntity.setMessage(new Message("0", "修改成功"));
+        } else {
+            resultEntity.setStatus(ResultState.FAIL.getState());
+            resultEntity.setMessage(new Message("-1", "修改失败"));
+        }
+        // 重定向到自考类型管理页面
+        resultEntity.setUri("/course/toExamType");
         return resultEntity;
     }
 

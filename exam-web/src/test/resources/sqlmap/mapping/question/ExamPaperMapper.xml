@@ -4,13 +4,13 @@
   <resultMap id="BaseResultMap" type="com.exam.system.manager.question.entity.ExamPaperEntity">
     <id column="paper_id" jdbcType="BIGINT" property="paperId" />
     <result column="paper_name" jdbcType="VARCHAR" property="paperName" />
-    <result column="paper_date" jdbcType="DATE" property="paperDate" />
+    <result column="paper_date" jdbcType="TIMESTAMP" property="paperDate" />
     <result column="state" jdbcType="VARCHAR" property="state" />
     <result column="paper_type" jdbcType="VARCHAR" property="paperType" />
     <result column="course_id" jdbcType="BIGINT" property="courseId" />
-    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="creator" jdbcType="BIGINT" property="creator" />
-    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="modifier" jdbcType="BIGINT" property="modifier" />
     <result column="Column_1" jdbcType="CHAR" property="column1" />
     <result column="Column_2" jdbcType="CHAR" property="column2" />
@@ -36,9 +36,9 @@
       creat_time, creator, update_time, 
       modifier, Column_1, Column_2, 
       Column_3)
-    values (#{paperId,jdbcType=BIGINT}, #{paperName,jdbcType=VARCHAR}, #{paperDate,jdbcType=DATE}, 
+    values (#{paperId,jdbcType=BIGINT}, #{paperName,jdbcType=VARCHAR}, #{paperDate,jdbcType=TIMESTAMP},
       #{state,jdbcType=VARCHAR}, #{paperType,jdbcType=VARCHAR}, #{courseId,jdbcType=BIGINT}, 
-      #{creatTime,jdbcType=DATE}, #{creator,jdbcType=BIGINT}, #{updateTime,jdbcType=DATE}, 
+      #{creatTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP},
       #{modifier,jdbcType=BIGINT}, #{column1,jdbcType=CHAR}, #{column2,jdbcType=CHAR}, 
       #{column3,jdbcType=CHAR})
   </insert>
@@ -93,7 +93,7 @@
         #{paperName,jdbcType=VARCHAR},
       </if>
       <if test="paperDate != null">
-        #{paperDate,jdbcType=DATE},
+        #{paperDate,jdbcType=TIMESTAMP},
       </if>
       <if test="state != null">
         #{state,jdbcType=VARCHAR},
@@ -105,13 +105,13 @@
         #{courseId,jdbcType=BIGINT},
       </if>
       <if test="creatTime != null">
-        #{creatTime,jdbcType=DATE},
+        #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         #{creator,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=DATE},
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         #{modifier,jdbcType=BIGINT},
@@ -134,7 +134,7 @@
         paper_name = #{paperName,jdbcType=VARCHAR},
       </if>
       <if test="paperDate != null">
-        paper_date = #{paperDate,jdbcType=DATE},
+        paper_date = #{paperDate,jdbcType=TIMESTAMP},
       </if>
       <if test="state != null">
         state = #{state,jdbcType=VARCHAR},
@@ -146,13 +146,13 @@
         course_id = #{courseId,jdbcType=BIGINT},
       </if>
       <if test="creatTime != null">
-        creat_time = #{creatTime,jdbcType=DATE},
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         creator = #{creator,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=DATE},
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         modifier = #{modifier,jdbcType=BIGINT},
@@ -172,13 +172,13 @@
   <update id="updateByPrimaryKey" parameterType="com.exam.system.manager.question.entity.ExamPaperEntity">
     update t_exam_paper
     set paper_name = #{paperName,jdbcType=VARCHAR},
-      paper_date = #{paperDate,jdbcType=DATE},
+      paper_date = #{paperDate,jdbcType=TIMESTAMP},
       state = #{state,jdbcType=VARCHAR},
       paper_type = #{paperType,jdbcType=VARCHAR},
       course_id = #{courseId,jdbcType=BIGINT},
-      creat_time = #{creatTime,jdbcType=DATE},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=BIGINT},
-      update_time = #{updateTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
       modifier = #{modifier,jdbcType=BIGINT},
       Column_1 = #{column1,jdbcType=CHAR},
       Column_2 = #{column2,jdbcType=CHAR},

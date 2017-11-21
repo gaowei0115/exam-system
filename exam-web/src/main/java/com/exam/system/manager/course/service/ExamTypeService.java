@@ -25,4 +25,11 @@ public interface ExamTypeService {
      * @return
      */
     List<ExamTypeEntity> queryAllTypes();
+
+    /**
+     * 修改考试类型
+     * @param entity
+     * @return
+     */
+    int updateExamType(ExamTypeEntity entity);
 }

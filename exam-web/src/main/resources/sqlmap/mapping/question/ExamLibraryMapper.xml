@@ -12,9 +12,9 @@
     <result column="select_content" jdbcType="VARCHAR" property="selectContent" />
     <result column="result" jdbcType="VARCHAR" property="result" />
     <result column="analysis" jdbcType="VARCHAR" property="analysis" />
-    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="creator" jdbcType="VARCHAR" property="creator" />
-    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="modifier" jdbcType="VARCHAR" property="modifier" />
     <result column="Column_1" jdbcType="CHAR" property="column1" />
     <result column="Column_2" jdbcType="CHAR" property="column2" />
@@ -45,8 +45,8 @@
     values (#{libraryId,jdbcType=BIGINT}, #{sourceCode,jdbcType=BIGINT}, #{sourceType,jdbcType=BIGINT}, 
       #{libraryType,jdbcType=VARCHAR}, #{courseId,jdbcType=BIGINT}, #{state,jdbcType=VARCHAR}, 
       #{title,jdbcType=VARCHAR}, #{selectContent,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
-      #{analysis,jdbcType=VARCHAR}, #{creatTime,jdbcType=DATE}, #{creator,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=DATE}, #{modifier,jdbcType=VARCHAR}, #{column1,jdbcType=CHAR}, 
+      #{analysis,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, #{column1,jdbcType=CHAR},
       #{column2,jdbcType=CHAR}, #{column3,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.exam.system.manager.question.entity.ExamLibraryEntity">
@@ -136,13 +136,13 @@
         #{analysis,jdbcType=VARCHAR},
       </if>
       <if test="creatTime != null">
-        #{creatTime,jdbcType=DATE},
+        #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         #{creator,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=DATE},
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         #{modifier,jdbcType=VARCHAR},
@@ -189,13 +189,13 @@
         analysis = #{analysis,jdbcType=VARCHAR},
       </if>
       <if test="creatTime != null">
-        creat_time = #{creatTime,jdbcType=DATE},
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         creator = #{creator,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=DATE},
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         modifier = #{modifier,jdbcType=VARCHAR},
@@ -223,9 +223,9 @@
       select_content = #{selectContent,jdbcType=VARCHAR},
       result = #{result,jdbcType=VARCHAR},
       analysis = #{analysis,jdbcType=VARCHAR},
-      creat_time = #{creatTime,jdbcType=DATE},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
       modifier = #{modifier,jdbcType=VARCHAR},
       Column_1 = #{column1,jdbcType=CHAR},
       Column_2 = #{column2,jdbcType=CHAR},

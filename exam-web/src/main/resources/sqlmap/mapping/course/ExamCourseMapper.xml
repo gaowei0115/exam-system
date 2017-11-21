@@ -8,12 +8,12 @@
     <result column="course_type" jdbcType="VARCHAR" property="courseType" />
     <result column="course_pic" jdbcType="VARCHAR" property="coursePic" />
     <result column="course_location" jdbcType="VARCHAR" property="courseLocation" />
-    <result column="exam_time" jdbcType="DATE" property="examTime" />
+    <result column="exam_time" jdbcType="TIMESTAMP" property="examTime" />
     <result column="course_version" jdbcType="VARCHAR" property="courseVersion" />
     <result column="course_desc" jdbcType="VARCHAR" property="courseDesc" />
-    <result column="creat_time" jdbcType="DATE" property="creatTime" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="creator" jdbcType="BIGINT" property="creator" />
-    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="modifier" jdbcType="BIGINT" property="modifier" />
     <result column="Column_1" jdbcType="CHAR" property="column1" />
     <result column="Column_2" jdbcType="CHAR" property="column2" />
@@ -43,8 +43,8 @@
       Column_3)
     values (#{courseId,jdbcType=BIGINT}, #{courseName,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
       #{courseType,jdbcType=VARCHAR}, #{coursePic,jdbcType=VARCHAR}, #{courseLocation,jdbcType=VARCHAR}, 
-      #{examTime,jdbcType=DATE}, #{courseVersion,jdbcType=VARCHAR}, #{courseDesc,jdbcType=VARCHAR}, 
-      #{creatTime,jdbcType=DATE}, #{creator,jdbcType=BIGINT}, #{updateTime,jdbcType=DATE}, 
+      #{examTime,jdbcType=TIMESTAMP}, #{courseVersion,jdbcType=VARCHAR}, #{courseDesc,jdbcType=VARCHAR},
+      #{creatTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP},
       #{modifier,jdbcType=BIGINT}, #{column1,jdbcType=CHAR}, #{column2,jdbcType=CHAR}, 
       #{column3,jdbcType=CHAR})
   </insert>
@@ -120,7 +120,7 @@
         #{courseLocation,jdbcType=VARCHAR},
       </if>
       <if test="examTime != null">
-        #{examTime,jdbcType=DATE},
+        #{examTime,jdbcType=TIMESTAMP},
       </if>
       <if test="courseVersion != null">
         #{courseVersion,jdbcType=VARCHAR},
@@ -129,13 +129,13 @@
         #{courseDesc,jdbcType=VARCHAR},
       </if>
       <if test="creatTime != null">
-        #{creatTime,jdbcType=DATE},
+        #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         #{creator,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=DATE},
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         #{modifier,jdbcType=BIGINT},
@@ -170,7 +170,7 @@
         course_location = #{courseLocation,jdbcType=VARCHAR},
       </if>
       <if test="examTime != null">
-        exam_time = #{examTime,jdbcType=DATE},
+        exam_time = #{examTime,jdbcType=TIMESTAMP},
       </if>
       <if test="courseVersion != null">
         course_version = #{courseVersion,jdbcType=VARCHAR},
@@ -179,13 +179,13 @@
         course_desc = #{courseDesc,jdbcType=VARCHAR},
       </if>
       <if test="creatTime != null">
-        creat_time = #{creatTime,jdbcType=DATE},
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="creator != null">
         creator = #{creator,jdbcType=BIGINT},
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=DATE},
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="modifier != null">
         modifier = #{modifier,jdbcType=BIGINT},
@@ -209,12 +209,12 @@
       course_type = #{courseType,jdbcType=VARCHAR},
       course_pic = #{coursePic,jdbcType=VARCHAR},
       course_location = #{courseLocation,jdbcType=VARCHAR},
-      exam_time = #{examTime,jdbcType=DATE},
+      exam_time = #{examTime,jdbcType=TIMESTAMP},
       course_version = #{courseVersion,jdbcType=VARCHAR},
       course_desc = #{courseDesc,jdbcType=VARCHAR},
-      creat_time = #{creatTime,jdbcType=DATE},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=BIGINT},
-      update_time = #{updateTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
       modifier = #{modifier,jdbcType=BIGINT},
       Column_1 = #{column1,jdbcType=CHAR},
       Column_2 = #{column2,jdbcType=CHAR},
