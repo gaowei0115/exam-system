@@ -78,6 +78,10 @@
 </body>
 <script type="text/javascript">
 	$(function () {
+
+        var url = window.document.location.href;
+        alert(url);
+
         $("#saveType").click(function () {
             var examName = $("#examName").val();
             var description = $("#description").val();

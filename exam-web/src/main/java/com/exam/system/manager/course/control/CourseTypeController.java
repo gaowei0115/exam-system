@@ -101,6 +101,16 @@ public class CourseTypeController extends BaseController{
     }
 
     /**
+     * 跳转到修改考试类型页面
+     * @return
+     */
+    @RequestMapping(value = "/toModifyExamType", method = {RequestMethod.POST, RequestMethod.GET})
+    public String toModifyExamType(@RequestBody ExamTypeEntity examTypeEntity) {
+        log.debug("进入修改考试类型管理页面 {}", examTypeEntity);
+        return "manager_course/course_type_add?examName=" + examTypeEntity.getExamName() + "&description="+examTypeEntity.getDescription();
+    }
+
+    /**
      * 修改自考类型
      * @param examTypeEntity
      * @return

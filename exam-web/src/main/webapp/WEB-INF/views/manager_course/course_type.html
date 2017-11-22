@@ -138,6 +138,7 @@
 										$(".pagination li").not($(this)).removeClass("active");
 									});
 								</script>
+								<a href="javascript:void(0)"  onclick="modify('1')" class="btn btn-link">编辑</a>
 							</div>
 						</td>
 					</tr>
@@ -186,6 +187,15 @@
         query(page, pageSize);
     }
 
+    /**
+     * 修改
+     * @param examName
+     * @param description
+     */
+    function modify(examName, description) {
+        window.location.href = getRootPath() + "/course/toModifyExamType?examName="+examName + "&description="+description;
+    }
+
 	/**
 	* 查询
 	 */
@@ -205,27 +215,27 @@
                 if (data.status == '0') {
                     var list = data.viewData.datas;
                     var result = '';
-                    $("#allExamType .dataInfo").remove();
+//                    $("#allExamType .dataInfo").remove();
                     for (var i = 0; i < list.length; i++) {
                         var d = list[i];
-                        /**
-						 * <td>英语等级考试</td>
-                         <td>2017-11-11 11:11:11</td>
-                         <td>英语等级类考试</td>
-                         <td style="margin: 0;padding: 0">
-                         <a href="course_type_add.html" class="btn btn-link">编辑</a>
-                         <a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a>
-                         </td>
-                         * @type {string}
-                         */
-                        result += '<tr class=\"dataInfo\">' +
-							'<td>' + d.examName + '</td>' +
-                            '<td>' + d.createTime  + '</td>' +
-                            '<td>' + d.description + '</td>' +
-                            '<td style=\"margin: 0;padding: 0\"><a href=\"course_type_add.html\" class=\"btn btn-link\">编辑</a>'+
-                            '<a href="javascript:;\" class=\"md-trigger btn  btn-link\" data-modal=\"modal-1\">删除</a></td>' +
-							'</tr>';
+                        var examName = "1";
+                        var description = d.description;
+//                        result += '<tr class=\"dataInfo\">' +
+//							'<td>' + d.examName + '</td>' +
+//                            '<td>' + d.createTime  + '</td>' +
+//                            '<td>' + d.description + '</td>' +
+//                            '<td style="margin: 0;padding: 0"><a href="javascript:void(0)"  id="modify" onclick="modify('"+ d.description +"')" class=\"btn btn-link\">编辑</a>'+
+//                            '<a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a></td>' +
+//							'</tr>';
+                        result += "<tr class=\"dataInfo\">" +
+                            "<td>" + d.examName + "</td>" +
+                            "<td>" + d.createTime  + "</td>" +
+                            "<td>" + d.description + "</td>" +
+                            "<td style=\"margin: 0;padding: 0\"><a href=\"javascript:void(0)\"  id=\"modify\" onclick=\"modify('"+ d.examName +"', '"+ d.description +"')\" class=\"btn btn-link\">编辑</a>"+
+                        "<a href=\"javascript:;\" class=\"md-trigger btn  btn-link\" data-modal=\"modal-1\">删除</a></td>" +
+                        "</tr>";
 					}
+					console.log(result);
 					$("#allExamType .info").after(result);
                     pageFn.setPageProperties($('.pagination'), data, {currentPage: page, pageSize: pageSize});
                 } else {
@@ -236,7 +246,9 @@
                 alert("fail!")
             }
         });
+
     }
+
 </script>
 
 </body>
