@@ -8,6 +8,7 @@ import com.exam.system.manager.course.service.ExamTypeService;
 import com.exam.system.manager.entity.Message;
 import com.exam.system.manager.entity.ResultEntity;
 import com.exam.system.manager.entity.ViewData;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,9 +108,9 @@ public class CourseTypeController extends BaseController{
      * @return
      */
     @RequestMapping(value = "/toModifyExamType", method = {RequestMethod.POST, RequestMethod.GET})
-    public String toModifyExamType(@RequestBody ExamTypeEntity examTypeEntity) {
-        log.debug("进入修改考试类型管理页面 {}", examTypeEntity);
-        return "manager_course/course_type_add?examName=" + examTypeEntity.getExamName() + "&description="+examTypeEntity.getDescription();
+    public String toModifyExamType(HttpServletRequest request, HttpServletResponse response) {
+        log.debug("进入修改考试类型管理页面 {}", request.getParameter("data"));
+        return "manager_course/course_type_add?examName";
     }
 
     /**
