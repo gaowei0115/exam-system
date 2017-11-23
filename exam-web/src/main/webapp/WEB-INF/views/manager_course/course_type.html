@@ -274,6 +274,15 @@
             });
         });
 
+        // 选择框动态选择
+        $("#pageSelect").change(function () {
+            var page = 1;
+            var pageSize = $('#pageSelect').val();
+            $("#pageleft").text("");
+            $("#pageId").bootstrapPaginator(null);
+            query(page, pageSize);
+        });
+
     })
 
 	/*
@@ -341,8 +350,6 @@
                     $("#allExamType .dataInfo").remove();
                     for (var i = 0; i < list.length; i++) {
                         var d = list[i];
-                        var examName = "1";
-                        var description = d.description;
 //                        result += '<tr class=\"dataInfo\">' +
 //							'<td>' + d.examName + '</td>' +
 //                            '<td>' + d.createTime  + '</td>' +

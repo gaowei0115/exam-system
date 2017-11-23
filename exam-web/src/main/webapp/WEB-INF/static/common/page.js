@@ -38,6 +38,15 @@ pageFn.setPageProperties = function (pageSelector, data, options) {
     $("#pageleft").text("共" + totalPages + "页/" + totals + "条数据");
     if (totalPages > 1) {
         pageFn.buildPage(pageSelector, $.extend(options, {totalPages: totalPages}));
+    } else {
+        var options = {
+            currentPage: 1, //当前页
+            totalPages: 1, //总页数
+            numberOfPages: 5, //设置控件显示的页码数
+            bootstrapMajorVersion: 3,//如果是bootstrap3版本需要加此标识，并且设置包含分页内容的DOM元素为UL,如果是bootstrap2版本，则DOM包含元素是DIV
+            useBootstrapTooltip: false,//是否显示tip提示框
+        }
+        pageSelector.bootstrapPaginator(options);
     }
 }
 
