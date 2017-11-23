@@ -38,19 +38,19 @@
 <body>
 	<div class="container-fluid">
 	    <div class="info-center" id="hader_h2">
-			<h2>新增考试类型</h2>    
+			<h2>添加考试类型</h2>
 	    </div>    
 		<div class="col-md-offset-2 col-md-8 underline_div">
-	   	   <span class="lead"><strong class="red">*</strong>基本信息</span>
+	   	   <span class="lead"><strong class="red">*</strong>考试类型基本信息</span>
 	    </div>
 	   
 	   <div class="col-md-offset-2 col-md-6">
 	   <form action="" class="form-horizontal" onsubmit="return false">
 
 				<div class="form-group">
-					<label for="" class="col-sm-3 control-label">考试名字：</label>
+					<label for="" class="col-sm-3 control-label">类型名称：</label>
 					<div class="col-sm-9">
-						<input type="text" name="examName" id="examName"  class="form-control" placeholder="请输入考试名字" />
+						<input type="text" name="examName" id="examName"  class="form-control" placeholder="请输入类型名字" />
 					</div>
 				</div>
 
@@ -78,13 +78,18 @@
 </body>
 <script type="text/javascript">
 	$(function () {
-
-        var url = window.document.location.href;
-        alert(url);
-
         $("#saveType").click(function () {
             var examName = $("#examName").val();
+            if (examName == null || examName == "") {
+                alert("请输入考试类型名称!");
+                return;
+			}
             var description = $("#description").val();
+            if (description == null || description == "") {
+                alert("请输入考试类型描述!");
+                return;
+            }
+
             var data = {
                 "examName":examName,
                 "description":description

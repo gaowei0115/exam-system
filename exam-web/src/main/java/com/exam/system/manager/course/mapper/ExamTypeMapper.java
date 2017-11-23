@@ -1,6 +1,7 @@
 package com.exam.system.manager.course.mapper;
 
 import com.exam.system.manager.course.entity.ExamTypeEntity;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -45,6 +46,13 @@ public interface ExamTypeMapper {
      * @return
      */
     List<ExamTypeEntity> queryAllTypes();
+
+    /**
+     * 查询满足条件的考试类型
+     * @param examTypeEntity
+     * @return
+     */
+    List<ExamTypeEntity> queryAllTypesOfCondition(ExamTypeEntity examTypeEntity);
 
     /**
      * 选择更新开始类型

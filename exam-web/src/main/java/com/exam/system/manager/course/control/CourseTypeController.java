@@ -3,6 +3,7 @@ package com.exam.system.manager.course.control;
 import com.exam.system.common.constant.ResultState;
 import com.exam.system.common.control.BaseController;
 import com.exam.system.common.log.impl.ControllerLogger;
+import com.exam.system.common.utils.StringUtils;
 import com.exam.system.manager.course.entity.ExamTypeEntity;
 import com.exam.system.manager.course.service.ExamTypeService;
 import com.exam.system.manager.entity.Message;
@@ -92,9 +93,18 @@ public class CourseTypeController extends BaseController{
     @ResponseBody
     public ResultEntity examTypeList(@RequestBody ExamTypeEntity examTypeEntity, @RequestParam(required = true, defaultValue = "1") Integer page, Integer pageSize) {
         ResultEntity resultEntity = new ResultEntity();
+        log.debug("考试类型查询：{}", examTypeEntity);
         // 设置分页
         PageHelper.startPage(page, pageSize);
-        List<ExamTypeEntity> list = examTypeService.queryAllTypes();
+        String search = examTypeEntity.getExamName();
+        List<ExamTypeEntity> list = null;
+        if (StringUtils.isBlank(search)) {
+            log.debug("查询条件为空，查询所有的记录");
+            list = examTypeService.queryAllTypes();
+        } else {
+            list = examTypeService.queryAllTypesOfCondition(examTypeEntity);
+            log.debug("查询条件【examName={}】不为空，查询满足条件的记录", search);
+        }
         PageInfo<ExamTypeEntity> pi = new PageInfo<>(list);
         ViewData<ExamTypeEntity> viewData = new ViewData<>(pi.getTotal(), list);
         resultEntity.setStatus(ResultState.SUCCESS.getState());
@@ -104,21 +114,11 @@ public class CourseTypeController extends BaseController{
     }
 
     /**
-     * 跳转到修改考试类型页面
-     * @return
-     */
-    @RequestMapping(value = "/toModifyExamType", method = {RequestMethod.POST, RequestMethod.GET})
-    public String toModifyExamType(HttpServletRequest request, HttpServletResponse response) {
-        log.debug("进入修改考试类型管理页面 {}", request.getParameter("data"));
-        return "manager_course/course_type_add?examName";
-    }
-
-    /**
      * 修改自考类型
      * @param examTypeEntity
      * @return
      */
-    @RequestMapping(value = "/modifyExamType", method = RequestMethod.GET)
+    @RequestMapping(value = "/modifyExamType", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public ResultEntity modifyExamType(@RequestBody ExamTypeEntity examTypeEntity) {
         ResultEntity resultEntity = new ResultEntity();
@@ -130,6 +130,29 @@ public class CourseTypeController extends BaseController{
         } else {
             resultEntity.setStatus(ResultState.FAIL.getState());
             resultEntity.setMessage(new Message("-1", "修改失败"));
+        }
+        // 重定向到自考类型管理页面
+        resultEntity.setUri("/course/toExamType");
+        return resultEntity;
+    }
+
+    /**
+     * 删除自考类型
+     * @param examId
+     * @return
+     */
+    @RequestMapping(value = "/deleteExamType", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public ResultEntity deleteExamType(@RequestParam(required = true) Long examId) {
+        ResultEntity resultEntity = new ResultEntity();
+        log.debug("删除考试类型，考试类型编号：{}", examId);
+        int result = examTypeService.deleteExamType(examId);
+        if (result > 0) {
+            resultEntity.setStatus(ResultState.SUCCESS.getState());
+            resultEntity.setMessage(new Message("0", "删除成功"));
+        } else {
+            resultEntity.setStatus(ResultState.FAIL.getState());
+            resultEntity.setMessage(new Message("-1", "删除失败"));
         }
         // 重定向到自考类型管理页面
         resultEntity.setUri("/course/toExamType");

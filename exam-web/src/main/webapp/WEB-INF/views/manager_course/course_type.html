@@ -60,7 +60,7 @@
 				<div class="row">
 					<div class="form-group col-md-5">
 						<label for="">搜索：</label>
-						<input type="text" class="form-control" id="examName" name="examName" style="width: 75%" placeholder="请输入考试类型名字" />
+						<input type="text" class="form-control" id="queryExamName" name="queryExamName" style="width: 75%" placeholder="请输入考试类型名字" />
 					</div>
 
 					<div class="form-group col-md-2">
@@ -77,36 +77,16 @@
 					<tr>
 						<td colspan=8>
 								<div class="pull-left">
-									<a href="toAddExamType" class="btn btn-info">新增考试类型</a>
+									<a href="toAddExamType" class="btn btn-info">添加考试类型</a>
 								</div>
 						</td>
 					</tr>
 					<tr class="info">
-						<th class="text-center">考试名字</th>
-						<th class="text-center">新增时间</th>
+						<th class="text-center">考试类型名字</th>
+						<th class="text-center">添加时间</th>
 						<th class="text-center">备注</th>
 						<th class="text-center">操作</th>
 					</tr>
-					<!--<tr>-->
-						<!--<td>英语等级考试</td>-->
-						<!--<td>2017-11-11 11:11:11</td>-->
-						<!--<td>英语等级类考试</td>-->
-						<!--<td style="margin: 0;padding: 0">-->
-							<!--<a href="course_type_add.html" class="btn btn-link">编辑</a>-->
-							<!--<a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a>-->
-						<!--</td>-->
-					<!--</tr>-->
-					<!--<tr>-->
-						<!--<td>自考</td>-->
-						<!--<td>2017-11-11 11:11:11</td>-->
-						<!--<td>学历提升考试</td>-->
-						<!--<td style="margin: 0;padding: 0">-->
-							<!--<a href="course_type_add.html" class="btn btn-link">编辑</a>-->
-							<!--<a href="javascript:;" class="md-trigger btn  btn-link" data-modal="modal-1">删除</a>-->
-						<!--</td>-->
-					<!--</tr>-->
-
-
 					<tr>
 						<td colspan=8>
 							<div id="pagePlus">
@@ -144,19 +124,40 @@
 				</table>
 			</div>
 		</div>
-		<!-- 提示删除语 -->
-	<div class="md-modal md-effect-2" id="modal-1">
-		<div class="modal-dialog modal-sm" role="document">
-			<div class="md-content">
-				<div class="modal-header bg-primary text-center"
-					style="height: 10px;font-size: 18px;">删除提示</div>
-				<div class="modal-body" style="padding-bottom: 15%">
-					<div>是否删除数据？</div>
-					<br> <input type="button"
-						class="btn btn-default md-close pull-right margin-width" value="否" />
-					<input type="button" class="btn btn-primary pull-right " value="是" />
-				</div>
 
+	<!--<div class="md-modal md-effect-2" id="modal-1">-->
+		<!--<div class="modal-dialog modal-sm" role="document">-->
+			<!--<div class="md-content">-->
+				<!--<div class="modal-header bg-primary text-center"-->
+					<!--style="height: 10px;font-size: 18px;">删除提示</div>-->
+				<!--<div class="modal-body" style="padding-bottom: 15%">-->
+					<!--<div>是否删除数据？</div>-->
+					<!--<br> <input type="button"-->
+						<!--class="btn btn-default md-close pull-right margin-width" value="否" />-->
+					<!--<input type="button" class="btn btn-primary pull-right " value="是" />-->
+				<!--</div>-->
+
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+
+	<!-- 提示删除语 -->
+	<div class="modal fade" id="deleteModel">
+		<div class="modal-dialog">
+			<div class="modal-content message_align">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="modal-title">提示信息</h4>
+				</div>
+				<div class="modal-body">
+					<p>您确认要删除吗？</p>
+				</div>
+				<div class="modal-footer">
+					<!-- 删除隐藏唯一标识 -->
+					<input type="hidden" id="delExamId"/>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<a  id="submitDelete" class="btn btn-success" data-dismiss="modal">确定</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -178,10 +179,13 @@
 				</div>
 
 				<div class="modal-body">
-					<form action="" class="form-group" onsubmit="return false">
+					<form action="" id="modifyForm" class="form-group" onsubmit="return false">
+						<!-- 隐藏考试类型编号 -->
+						<input type="hidden" name="examId" id="examId"  class="form-control" />
+
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">考试名字：</label>
-							<input type="text" name="examName" id="examName"  class="form-control" />
+							<input type="text" name="examName" id="modifyExamName"  class="form-control" />
 						</div>
 
 						<div class="form-group">
@@ -191,8 +195,10 @@
 
 						<div class="text-right">
 							<label for="" class="col-sm-3"></label>
-							<button class="btn btn-danger" data-dismiss="modal">取消</button>
-							<input type="submit" id="saveType" class="btn btn-primary margin-width" value="保存" />
+							<!--<button class="btn btn-danger" data-dismiss="modal">取消</button>-->
+							<!--<input type="submit" id="saveType" class="btn btn-primary margin-width" value="保存" />-->
+							<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+							<button type="button" id="saveType" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
 						</div>
 					</form>
 				</div>
@@ -205,13 +211,68 @@
 
 <script type="text/javascript">
     $(function(){
+
+        // 初始化
 		init();
+
         /*
         * 查询
         * */
         $("#query").click(function () {
-			query();
+            var page = 1;
+            var pageSize = $("#pageSelect").val();
+			query(page, pageSize);
 		});
+
+        // 修改保存
+        $("#saveType").click(function () {
+            var examId = $("#examId").val();
+            var examName = $("#modifyExamName").val();
+            var description = $("#description").val();
+
+            var data = {
+                "examId" : examId,
+                "examName" : examName,
+                "description" : description
+            }
+            $.ajax({
+                url:getRootPath()+'/course/modifyExamType',
+                type:"post",
+                dataType:"json",
+                data:JSON.stringify(data),
+                contentType:"application/json",
+                success : function(result) {
+                    if (result.status == '0') {
+                        window.location.href = getRootPath() + result.uri;
+                    } else {
+                        alert(result.message)
+                    }
+                },
+                error : function (result) {
+                    alert("fail!")
+                }
+            });
+        });
+
+        // 删除
+        $("#submitDelete").click(function () {
+            var examId = $("#delExamId").val();
+
+            $.ajax({
+                url:getRootPath()+'/course/deleteExamType?examId=' + examId,
+                type:"get",
+                success : function(result) {
+                    if (result.status == '0') {
+                        window.location.href = getRootPath() + result.uri;
+                    } else {
+                        alert(result.message)
+                    }
+                },
+                error : function (result) {
+                    alert("fail!")
+                }
+            });
+        });
 
     })
 
@@ -226,26 +287,44 @@
     }
 
     /**
-     * 修改
+     * 修改按钮
      * @param examName
      * @param description
      */
-    function modify(examName, description) {
-//        window.location.href = getRootPath() + "/course/toModifyExamType?examName="+examName + "&description="+description;
-        var data = {
-            "examName":examName,
-			"description":description
-        };
-
-        window.location.href = getRootPath() + "/course/toModifyExamType?data=" + data;
+    function modify(examId, examName, description) {
+////        window.location.href = getRootPath() + "/course/toModifyExamType?examName="+examName + "&description="+description;
+//        var data = {
+//            "examName":examName,
+//			"description":description
+//        };
+//
+//        window.location.href = getRootPath() + "/course/toModifyExamType?data=" + data;
+		$("#modifyExamName ").val(examName);
+		$("#description").val(description);
+        $("#examId").val(examId);
+        // 开启修改框
+        $('#examTypeModify').modal();
     }
 
-	/**
+    /**
+     * 删除按钮
+     * @param examName
+     * @param description
+     */
+    function deleteOp(examId) {
+        $("#delExamId").val(examId);
+        // 开启删除提示框
+        $("#deleteModel").modal();
+    }
+
+    /**
 	* 查询
 	 */
 	function  query(page, pageSize) {
-        var examName = $("#examName").val();
-        var pageSelect = $("#pageSelect").val();
+        var examName = $("#queryExamName").val();
+        if (examName == '请输入考试类型名字') {
+            examName = "";
+		}
         var data = {
             "examName":examName
         };
@@ -259,7 +338,7 @@
                 if (data.status == '0') {
                     var list = data.viewData.datas;
                     var result = '';
-//                    $("#allExamType .dataInfo").remove();
+                    $("#allExamType .dataInfo").remove();
                     for (var i = 0; i < list.length; i++) {
                         var d = list[i];
                         var examName = "1";
@@ -280,11 +359,12 @@
 //                        "</tr>";
 
                         result += "<tr class=\"dataInfo\">" +
+								+ "<input type=\"hidden\" id=\"examId\" name=\"examId\" value=\"'" + d.examId + "'\"/>" +
                             "<td>" + d.examName + "</td>" +
                             "<td>" + d.createTime  + "</td>" +
                             "<td>" + d.description + "</td>" +
-                            "<td style=\"margin: 0;padding: 0\"><a data-toggle=\"modal\" data-target=\"#examTypeModify\" href=\"\" class=\"btn btn-link\">编辑</a>" +
-                            "<a data-toggle=\"modal\" data-target=\"#login\" href=\"\" class=\"md-trigger btn  btn-link\" >删除</a></td>" +
+                            "<td style=\"margin: 0;padding: 0\"><a data-toggle=\"modal\" onclick=\"modify('"+ d.examId +"', '"+ d.examName +"', '"+ d.description +"')\"  href=\"\" class=\"btn btn-link\">编辑</a>" +
+                            "<a data-toggle=\"modal\" href=\"\" onclick=\"deleteOp('"+ d.examId +"')\" class=\"md-trigger btn  btn-link\" >删除</a></td>" +
                             "</tr>";
 					}
 					console.log(result);

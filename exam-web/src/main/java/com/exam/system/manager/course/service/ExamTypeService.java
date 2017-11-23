@@ -27,9 +27,23 @@ public interface ExamTypeService {
     List<ExamTypeEntity> queryAllTypes();
 
     /**
+     * 查询满足条件的考试类型
+     * @return
+     */
+    List<ExamTypeEntity> queryAllTypesOfCondition(ExamTypeEntity examTypeEntity);
+
+    /**
      * 修改考试类型
      * @param entity
      * @return
      */
     int updateExamType(ExamTypeEntity entity);
+
+    /**
+     * 删除考试类型
+     * 将考试类型更新成失效状态
+     * @param examId
+     * @return
+     */
+    int deleteExamType(Long examId);
 }

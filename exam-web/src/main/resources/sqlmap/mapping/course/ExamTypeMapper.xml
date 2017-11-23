@@ -24,6 +24,17 @@
     select
     <include refid="Base_Column_List" />
     from t_exam_type
+    WHERE exam_effect='0'
+    order by exam_id
+  </select>
+
+  <!-- 查询满足条件的考试类型 -->
+  <select id="queryAllTypesOfCondition" resultMap="BaseResultMap" parameterType="com.exam.system.manager.course.entity.ExamTypeEntity">
+    <bind name="condition" value="'%' + examName + '%'" />
+    select
+    <include refid="Base_Column_List" />
+    from t_exam_type
+    WHERE exam_effect='0' AND exam_name LIKE #{condition}
     order by exam_id
   </select>
 

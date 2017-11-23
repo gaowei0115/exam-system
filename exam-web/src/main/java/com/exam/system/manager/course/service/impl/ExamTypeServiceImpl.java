@@ -43,7 +43,20 @@ public class ExamTypeServiceImpl implements ExamTypeService{
     }
 
     @Override
+    public List<ExamTypeEntity> queryAllTypesOfCondition(ExamTypeEntity examTypeEntity) {
+        return examTypeMapper.queryAllTypesOfCondition(examTypeEntity);
+    }
+
+    @Override
     public int updateExamType(ExamTypeEntity entity) {
         return examTypeMapper.updateByPrimaryKeySelective(entity);
+    }
+
+    @Override
+    public int deleteExamType(Long examId) {
+        ExamTypeEntity examTypeEntity = new ExamTypeEntity();
+        examTypeEntity.setExamId(examId);
+        examTypeEntity.setExamEffect(EffectState.EFFECT_FAIL.getState());
+        return examTypeMapper.updateByPrimaryKeySelective(examTypeEntity);
     }
 }
