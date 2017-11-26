@@ -6,7 +6,7 @@
 
     <description>Redis Configuration</description>
 
-    <bean id="jedisCluster" class="com.exam.system.common.utils.JedisClusterFactory">
+    <bean id="jedisCluster" class="com.exam.system.common.core.redis.JedisClusterFactory">
         <property name="addressConfig">
             <value>classpath:property/redis-config.properties</value>
         </property>

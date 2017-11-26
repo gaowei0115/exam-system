@@ -1,4 +1,4 @@
-package com.exam.system.common.utils;
+package com.exam.system.common.core.redis;
 
 import com.exam.system.common.log.impl.OtherLogger;
 import net.sf.cglib.proxy.Enhancer;
