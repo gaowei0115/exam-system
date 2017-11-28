@@ -56,10 +56,11 @@
         <property name="filterChainDefinitions">
             <value>
                 /toLogin = anon
+                /toList=anon
                 /js/*=anon
                 /css/*=anon
                 # everything else requires authentication:
-                /** = anon
+                /** = authc
             </value>
         </property>
     </bean>

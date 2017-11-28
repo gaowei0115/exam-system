@@ -7,12 +7,12 @@ import org.apache.shiro.realm.Realm;
 
 /**
  * @packageName：com.exam.system.test.common.shiro
- * @desrciption: 自定义Realm实现
+ * @desrciption:
  * @author: gaowei
- * @date： 2017-11-08 11:27
+ * @date： 2017-11-28 15:36
  * @history: (version) author date desc
  */
-public class TestAutoRealm implements Realm{
+public class AutoRealm implements Realm{
     @Override
     public String getName() {
         return null;
