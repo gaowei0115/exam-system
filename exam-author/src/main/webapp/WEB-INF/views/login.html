@@ -28,15 +28,15 @@
         <h1>题库后台管理系统</h1>
     </div>
     <div class="login-box">
-        <form class="login-form" action="index">
+        <form class="login-form" action="login/login" method="post">
             <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>用户登录</h3>
             <div class="form-group">
                 <label class="control-label">用户名</label>
-                <input class="form-control" type="text" placeholder="userName" autofocus>
+                <input class="form-control" type="text" placeholder="userName" id="userName" name="userName" autofocus>
             </div>
             <div class="form-group">
                 <label class="control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-                <input class="form-control" type="password" placeholder="Password">
+                <input class="form-control" type="password" placeholder="Password" id="password" name="password">
             </div>
             <div class="form-group">
                 <div class="utility">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="form-group btn-container">
-                <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+                <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-sign-in fa-lg fa-fw"></i>登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
             </div>
         </form>
     </div>
