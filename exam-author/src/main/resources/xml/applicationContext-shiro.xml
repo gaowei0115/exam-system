@@ -44,11 +44,13 @@
                配置那些页面需要权限验证
                anon ：可以匿名访问
                authc:需要认证之后才能访问（登录之后）
+               logout:登出认证过滤器
         -->
         <property name="filterChainDefinitions">
             <value>
                 /login.jsp = anon
                 /login/login = anon
+                /login/logout = logout
                 /js/*=anon
                 /css/*=anon
                 # everything else requires authentication:

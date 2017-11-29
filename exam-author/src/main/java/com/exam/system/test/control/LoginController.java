@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import sun.misc.Request;
 
 /**
  * @packageName：com.exam.system.test.control
@@ -24,6 +25,12 @@ public class LoginController {
         return "login";
     }
 
+
+    @RequestMapping(value = "/toUser", method = RequestMethod.GET)
+    public String toUser() {
+        return "user";
+    }
+
     @RequestMapping(value = "/login", method={RequestMethod.POST})
     public String login(@RequestParam("userName") String userName, @RequestParam("password") String password) {
         Subject subject = SecurityUtils.getSubject();
@@ -38,6 +45,11 @@ public class LoginController {
                 System.out.println("登录失败：" + e.getMessage());
             }
         }
+        return "redirect:/login/toList";
+    }
+
+    @RequestMapping(value = "/toList", method = RequestMethod.GET)
+    public String toList() {
         return "list";
     }
 }
