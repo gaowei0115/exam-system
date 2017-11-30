@@ -1,7 +1,9 @@
 package com.exam.system.test.common.shiro;
 
 import org.apache.shiro.authc.*;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthenticatingRealm;
+import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,14 +46,41 @@ public class LoginRealm  extends AuthenticatingRealm{
          * credentialsSalt：当前realm对象的name，调用父类的getName()方法即可.
          */
         Object principal = userName;
-        Object credentials = "123456";
+        // 密码采用加密后的值
+//        Object credentials = "123456";
+        Object credentials = "fc1709d0a95a6be30bc5926fdb7f22f4";
+        if ("admin".equals(userName)) {
+            credentials = "038bdaf98f2037b31f1e75b5b4c9b26e";
+        } else if ("user".equals(userName)){
+            credentials = "098d2c478e9c11555ce2823231e02ec1";
+        }
         String realmName = getName();
 
         /**
          * 登录用户名密码是交给Shiro完成，只需要将登录realm和从数据库中获取的密码
          */
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principal, credentials, realmName);
+//        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principal, credentials, realmName);
+        /**
+         * 保证相同密码加密之后的值不同，采用盐值（salt）保证
+         * 在创建SimpleAuthenticationInfo对象返回值的时候，需要使用带有入参盐值（salt）创建
+         * ByteSource credentialsSalt
+         * 可以使用salt区分某个用户的密码加密之后的唯一性，确定salt取值问题，可以使用登录用户作为盐值，登录用户名是唯一的
+         */
+        ByteSource credentialsSalt = ByteSource.Util.bytes(userName);
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principal, credentials, credentialsSalt, realmName);
 
         return authenticationInfo;
+    }
+
+    public static void main(String[] args) {
+        // 模拟计算用户存储的密码加密后的值
+        String hashAlgorithmName = "MD5";
+        String credentials =  "123456";
+        String userName = "user";
+        Object salt = ByteSource.Util.bytes(userName);
+        int hashIterations = 1024;
+
+        Object result = new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);
+        System.out.println(result);
     }
 }

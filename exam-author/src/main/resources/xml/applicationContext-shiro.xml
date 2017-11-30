@@ -12,7 +12,18 @@
         <property name="realm" ref="loginRealm"/>
     </bean>
 
-    <bean id="loginRealm" class="com.exam.system.test.common.shiro.LoginRealm"/>
+    <bean id="loginRealm" class="com.exam.system.test.common.shiro.LoginRealm">
+        <!-- 指定realm的加密算法 -->
+        <property name="credentialsMatcher">
+            <!-- 加密 -->
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <!-- 加密算法指定 -->
+                <property name="hashAlgorithmName" value="MD5"/>
+                <!-- 加密次数 -->
+                <property name="hashIterations" value="1024"/>
+            </bean>
+        </property>
+    </bean>
     <!-- 缓存管理器
         引入EHCache管理，通过配置文件管理
     -->
