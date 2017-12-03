@@ -9,7 +9,34 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <!-- 缓存管理器 -->
         <property name="cacheManager" ref="cacheManager"/>
-        <property name="realm" ref="loginRealm"/>
+        <!--<property name="realm" ref="loginRealm"/>-->
+        <!-- 多个realm认证 -->
+        <!--<property name="realms">-->
+            <!--<list>-->
+                <!--<ref bean="loginRealm"/>-->
+                <!--<ref bean="loginRealm2"/>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!-- 引用modularRealmAuthorizer实现多个realm认证
+            多个realm认证，如果存在都能认证成功，可以通过配置认证策略，如果一个realm证认成功，不在执行第二个。
+            AuthenticationStrategy：认证策略
+        -->
+        <property name="authenticator" ref="modularRealmAuthenticator"/>
+    </bean>
+
+    <!-- 多个realm认证 -->
+    <bean id="modularRealmAuthenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+        <property name="realms">
+            <list>
+                <ref bean="loginRealm"/>
+                <ref bean="loginRealm2"/>
+            </list>
+        </property>
+        <!-- 添加认证策略 -->
+        <property name="authenticationStrategy">
+            <!-- 必须所有的认证成功才能通过 -->
+            <bean class="org.apache.shiro.authc.pam.AllSuccessfulStrategy"/>
+        </property>
     </bean>
 
     <bean id="loginRealm" class="com.exam.system.test.common.shiro.LoginRealm">
@@ -21,9 +48,33 @@
                 <property name="hashAlgorithmName" value="MD5"/>
                 <!-- 加密次数 -->
                 <property name="hashIterations" value="1024"/>
+                <!--
+                    realm 登录时异常解决
+                    org.apache.shiro.crypto.CryptoException: Unable to execute 'doFinal' with cipher instance [javax.crypto.Cipher@dc89d5e].
+                -->
+                <property name="storedCredentialsHexEncoded" value="true"/>
             </bean>
         </property>
     </bean>
+
+    <bean id="loginRealm2" class="com.exam.system.test.common.shiro.LoginRealm2">
+        <!-- 指定realm的加密算法 -->
+        <property name="credentialsMatcher">
+            <!-- 加密 -->
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <!-- 加密算法指定 -->
+                <property name="hashAlgorithmName" value="SHA-1"/>
+                <!-- 加密次数 -->
+                <property name="hashIterations" value="1024"/>
+                <!--
+                    realm 异常解决
+                    org.apache.shiro.crypto.CryptoException: Unable to execute 'doFinal' with cipher instance [javax.crypto.Cipher@dc89d5e].
+                -->
+                <property name="storedCredentialsHexEncoded" value="true"/>
+            </bean>
+        </property>
+    </bean>
+
     <!-- 缓存管理器
         引入EHCache管理，通过配置文件管理
     -->

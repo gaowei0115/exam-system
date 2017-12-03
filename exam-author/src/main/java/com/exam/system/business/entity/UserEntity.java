@@ -27,6 +27,14 @@ public class UserEntity {
 
     private Date updateTime;
 
+    /**
+     * 返回加密salt标识
+     * @return
+     */
+    public String getCredentialsSalt() {
+        return loginName + salt;
+    }
+
     public Long getUserId() {
         return userId;
     }

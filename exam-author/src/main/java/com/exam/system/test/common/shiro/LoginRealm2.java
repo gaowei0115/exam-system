@@ -11,17 +11,17 @@ import org.slf4j.LoggerFactory;
  * @packageName：com.exam.system.test.common.shiro
  * @desrciption:
  * @author: gaowei
- * @date： 2017/11/28 21:27
+ * @date： 2017/12/3 18:14
  * @history: (version) author date desc
  */
-public class LoginRealm  extends AuthenticatingRealm{
+public class LoginRealm2 extends AuthenticatingRealm{
 
     // logger
     private static final Logger log = LoggerFactory.getLogger(LoginRealm.class);
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-       log.debug("进入 realm1 {}", token);
+        log.debug("进入 realm2 {}", token);
         // 1. 把AuthenticationToken 转换为 UsernamePasswordToken
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
         // 2. 从UsernamePasswordToken 中获取userName
@@ -50,9 +50,9 @@ public class LoginRealm  extends AuthenticatingRealm{
 //        Object credentials = "123456";
         Object credentials = "fc1709d0a95a6be30bc5926fdb7f22f4";
         if ("admin".equals(userName)) {
-            credentials = "038bdaf98f2037b31f1e75b5b4c9b26e";
+            credentials = "ce2f6417c7e1d32c1d81a797ee0b499f87c5de06";
         } else if ("user".equals(userName)){
-            credentials = "098d2c478e9c11555ce2823231e02ec1";
+            credentials = "073d4c3ae812935f23cb3f2a71943f49e082a718";
         }
         String realmName = getName();
 
@@ -67,16 +67,16 @@ public class LoginRealm  extends AuthenticatingRealm{
          * 可以使用salt区分某个用户的密码加密之后的唯一性，确定salt取值问题，可以使用登录用户作为盐值，登录用户名是唯一的
          */
         ByteSource credentialsSalt = ByteSource.Util.bytes(userName);
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(principal, credentials, credentialsSalt, realmName);
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo("realm2", credentials, credentialsSalt, realmName);
 
         return authenticationInfo;
     }
 
     public static void main(String[] args) {
         // 模拟计算用户存储的密码加密后的值
-        String hashAlgorithmName = "MD5";
+        String hashAlgorithmName = "SHA-1";
         String credentials =  "123456";
-        String userName = "user";
+        String userName = "admin";
         Object salt = ByteSource.Util.bytes(userName);
         int hashIterations = 1024;
 
