@@ -34,8 +34,15 @@
         </property>
         <!-- 添加认证策略 -->
         <property name="authenticationStrategy">
-            <!-- 必须所有的认证成功才能通过 -->
-            <bean class="org.apache.shiro.authc.pam.AllSuccessfulStrategy"/>
+            <!-- 必须所有的认证成功才能通过
+                AllSuccessfulStrategy ： 多个realm必须都认证通过才执行
+            -->
+            <!--<bean class="org.apache.shiro.authc.pam.AllSuccessfulStrategy"/>-->
+
+            <!-- 只要有个认证通过
+                只要有一个Realm验证成功即可, 将返回所有的realm身份认证成功信息。
+            -->
+            <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"/>
         </property>
     </bean>
 
